@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Textly</title>
+<style>
+:root{--bg:#eef3f1;--panel:#fff;--ink:#17302b;--muted:#6b807a;--line:#d6e1dd;--me:#0f766e;--them:#e3ece9;--accent:#0f766e;--err:#b42318}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1715;--panel:#15211e;--ink:#e4efec;--muted:#8aa39c;--line:#25362f;--me:#14907f;--them:#22332e;--accent:#3cc4b0;--err:#f97066;color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;font-size:16px;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+.login{height:100%;display:grid;place-items:center;padding:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px;width:100%;max-width:380px}
+.card h1{margin:0 0 6px;color:var(--accent)}.card p{color:var(--muted);margin:0 0 18px;line-height:1.4}
+input{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:22px;padding:11px 16px;min-width:0}
+.card input{width:100%;margin-bottom:12px}
+button{font:inherit}
+.btn{border:0;border-radius:22px;padding:11px 20px;background:var(--me);color:#fff;font-weight:600;cursor:pointer}
+.card .btn{width:100%}
+.err{color:var(--err);font-size:14px;min-height:20px;margin:0 0 8px}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.app{display:flex;height:100%;max-width:1000px;margin:0 auto;background:var(--panel);border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.side{width:300px;border-right:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+.side header{padding:16px;border-bottom:1px solid var(--line)}
+.side h2{margin:0;color:var(--accent);font-size:22px}
+.mine{color:var(--muted);font-size:13px;margin-top:2px}
+.mine button{border:0;background:none;color:var(--accent);cursor:pointer;padding:0 0 0 8px}
+.new{display:flex;gap:8px;padding:12px 16px}.new input{flex:1}.new .btn{padding:0 16px}
+#list{overflow-y:auto;flex:1}
+.contact{display:flex;gap:12px;align-items:center;padding:12px 16px;cursor:pointer;border:0;background:none;color:inherit;width:100%;text-align:left}
+.contact:hover,.contact.on{background:var(--bg)}
+.av{width:42px;height:42px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff;font-weight:600;background:var(--me)}
+.ct{min-width:0;flex:1}.ct b{display:block}.ct span{display:block;color:var(--muted);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.empty{padding:24px 16px;color:var(--muted);line-height:1.4}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.top{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);min-height:67px}
+.back{display:none;border:0;background:none;color:var(--accent);font-size:24px;cursor:pointer;padding:0 6px}
+.status{margin-left:auto;font-size:13px;color:var(--muted)}
+.msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:6px}
+.m{max-width:75%;padding:9px 13px;border-radius:18px;line-height:1.35;overflow-wrap:anywhere}
+.m.me{align-self:flex-end;background:var(--me);color:#fff;border-bottom-right-radius:5px}
+.m.them{align-self:flex-start;background:var(--them);border-bottom-left-radius:5px}
+.m small{display:block;font-size:11px;opacity:.7;margin-top:2px}
+.bar{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--line)}
+.bar input{flex:1}
+@media (max-width:640px){.side{width:100%;border:0}.main{display:none}.app.chat .side{display:none}.app.chat .main{display:flex}.back{display:block}}
+</style>
+</head>
+<body>
+
+<div class="login" id="login">
+  <div class="card">
+    <h1>Textly</h1>
+    <p>Enter your phone number. Other people reach you by typing this number in their chat list.</p>
+    <input id="phone" type="tel" inputmode="tel" placeholder="+966 5X XXX XXXX" autocomplete="tel">
+    <div class="err" id="lerr"></div>
+    <button class="btn" id="go">Start texting</button>
+  </div>
+</div>
+
+<div class="app" id="app" hidden>
+  <aside class="side">
+    <header><h2>Textly</h2><div class="mine"><span id="mine"></span><button id="out">Change number</button></div></header>
+    <div class="new"><input id="to" type="tel" inputmode="tel" placeholder="Number to text"><button class="btn" id="add">Chat</button></div>
+    <div class="err" id="nerr" style="padding:0 16px"></div>
+    <div id="list"></div>
+  </aside>
+  <section class="main">
+    <div class="top"><button class="back" id="back" aria-label="Back to chats">‹</button><div class="av" id="hav"></div><b id="hname"></b><span class="status" id="status">Connecting…</span></div>
+    <div class="msgs" id="msgs" aria-live="polite"></div>
+    <div class="bar"><input id="inp" placeholder="Type a message" autocomplete="off"><button class="btn" id="send">Send</button></div>
+  </section>
+</div>
+
+<script>
+// Messages travel through ntfy.sh, a free public relay that needs no account or server of your own.
+var RELAY="https://ntfy.sh/";
+var $=function(i){return document.getElementById(i)};
+var me="",chats={},seen={},cur="",es=null;
+
+function load(){try{var s=JSON.parse(localStorage.getItem("textly2")||"{}");me=s.me||"";chats=s.chats||{};seen=s.seen||{}}catch(e){}}
+function save(){try{localStorage.setItem("textly2",JSON.stringify({me:me,chats:chats,seen:seen}))}catch(e){}}
+function norm(s){return String(s).replace(/\D/g,"")}
+function valid(n){return n.length>=8&&n.length<=15}
+function pretty(n){return "+"+n}
+function fmt(ts){return new Date(ts).toLocaleTimeString([],{hour:"numeric",minute:"2-digit"})}
+
+function topic(n){
+  var s="textly-phone-"+n;
+  if(window.crypto&&crypto.subtle){
+    return crypto.subtle.digest("SHA-256",new TextEncoder().encode(s)).then(function(b){
+      return "tx"+Array.prototype.map.call(new Uint8Array(b),function(x){return ("0"+x.toString(16)).slice(-2)}).join("").slice(0,40)});
+  }
+  return Promise.resolve("tx"+btoa(s).replace(/\W/g,"").slice(0,40));
+}
+
+function addMsg(num,m){
+  if(!chats[num])chats[num]=[];
+  chats[num].push(m);
+  chats[num].sort(function(a,b){return a.ts-b.ts});
+}
+
+function connect(){
+  if(es)es.close();
+  topic(me).then(function(t){
+    es=new EventSource(RELAY+t+"/sse?since=all");
+    es.onopen=function(){$("status").textContent="Online"};
+    es.onerror=function(){$("status").textContent="Reconnecting…"};
+    es.onmessage=function(e){
+      var d;try{d=JSON.parse(e.data)}catch(x){return}
+      if(d.event!=="message"||seen[d.id])return;
+      seen[d.id]=1;
+      var p;try{p=JSON.parse(d.message)}catch(x){return}
+      var from=norm(p.from||"");
+      if(!valid(from)||from===me||typeof p.text!=="string")return;
+      addMsg(from,{me:false,t:p.text.slice(0,2000),ts:p.ts||d.time*1000});
+      save();render();
+    };
+  });
+}
+
+function send(){
+  var v=$("inp").value.trim();if(!v||!cur)return;
+  var to=cur;$("inp").value="";
+  addMsg(to,{me:true,t:v,ts:Date.now()});save();render();
+  topic(to).then(function(t){
+    return fetch(RELAY+t,{method:"POST",body:JSON.stringify({from:me,text:v,ts:Date.now()})});
+  }).then(function(r){if(!r.ok)throw 0}).catch(function(){$("status").textContent="Message may not have sent"});
+}
+
+function render(){
+  var l=$("list");l.innerHTML="";
+  var nums=Object.keys(chats).sort(function(a,b){var x=chats[a],y=chats[b];return y[y.length-1].ts-x[x.length-1].ts});
+  if(!nums.length){var e=document.createElement("div");e.className="empty";e.textContent="No chats yet. Type a phone number above to start one, or share your number so others can text you.";l.appendChild(e)}
+  nums.forEach(function(n){
+    var last=chats[n][chats[n].length-1];
+    var b=document.createElement("button");b.className="contact"+(n===cur?" on":"");
+    var a=document.createElement("div");a.className="av";a.textContent="#";
+    var c=document.createElement("div");c.className="ct";
+    var nm=document.createElement("b");nm.textContent=pretty(n);
+    var sp=document.createElement("span");sp.textContent=(last.me?"You: ":"")+last.t;
+    c.appendChild(nm);c.appendChild(sp);b.appendChild(a);b.appendChild(c);
+    b.onclick=function(){open(n)};l.appendChild(b);
+  });
+  var m=$("msgs");m.innerHTML="";
+  if(cur){
+    $("hname").textContent=pretty(cur);$("hav").textContent="#";
+    (chats[cur]||[]).forEach(function(x){
+      var d=document.createElement("div");d.className="m "+(x.me?"me":"them");
+      d.appendChild(document.createTextNode(x.t));
+      var s=document.createElement("small");s.textContent=fmt(x.ts);d.appendChild(s);m.appendChild(d);
+    });
+    m.scrollTop=m.scrollHeight;
+  }else{$("hname").textContent="Pick a chat";$("hav").textContent=""}
+}
+
+function open(n){cur=n;$("app").classList.add("chat");render();$("inp").focus()}
+
+function enter(){
+  $("login").hidden=true;$("app").hidden=false;
+  $("mine").textContent="You: "+pretty(me);
+  render();connect();
+}
+
+$("go").onclick=function(){
+  var n=norm($("phone").value);
+  if(!valid(n)){$("lerr").textContent="Enter a full number with country code, like +966501234567.";return}
+  me=n;save();enter();
+};
+$("phone").onkeydown=function(e){if(e.key==="Enter")$("go").click()};
+$("add").onclick=function(){
+  var n=norm($("to").value);
+  if(!valid(n)){$("nerr").textContent="Enter a full number with country code.";return}
+  if(n===me){$("nerr").textContent="That's your own number.";return}
+  $("nerr").textContent="";$("to").value="";
+  if(!chats[n])chats[n]=[{me:false,t:"Chat started. Say hello!",ts:Date.now()}];
+  save();open(n);
+};
+$("to").onkeydown=function(e){if(e.key==="Enter")$("add").click()};
+$("send").onclick=send;
+$("inp").onkeydown=function(e){if(e.key==="Enter")send()};
+$("back").onclick=function(){$("app").classList.remove("chat")};
+$("out").onclick=function(){
+  if(es)es.close();me="";cur="";save();
+  $("app").hidden=true;$("login").hidden=false;$("phone").value="";
+};
+
+load();
+if(me)enter();
+</script>
+</body>
+</html>
