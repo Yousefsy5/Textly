@@ -1,284 +1,306 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Textly</title>
+<meta name="theme-color" content="#0f766e">
+<title>Textly — Messages</title>
 <style>
-:root{--bg:#eef3f1;--panel:#fff;--ink:#17302b;--muted:#6b807a;--line:#d6e1dd;--me:#0f766e;--them:#e3ece9;--accent:#0f766e;--err:#b42318}
-@media (prefers-color-scheme:dark){:root{--bg:#0e1715;--panel:#15211e;--ink:#e4efec;--muted:#8aa39c;--line:#25362f;--me:#14907f;--them:#22332e;--accent:#3cc4b0;--err:#f97066;color-scheme:dark}}
-*{box-sizing:border-box}
-html,body{height:100%;margin:0}
-body{background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;font-size:16px;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-[hidden]{display:none!important}
-.login{height:100%;display:grid;place-items:center;padding:20px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px;width:100%;max-width:380px}
-.card h1{margin:0 0 6px;color:var(--accent)}.card p{color:var(--muted);margin:0 0 18px;line-height:1.4}
-input{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:22px;padding:11px 16px;min-width:0}
-.card input{width:100%;margin-bottom:12px}
-button{font:inherit}
-.btn{border:0;border-radius:22px;padding:11px 20px;background:var(--me);color:#fff;font-weight:600;cursor:pointer}
-.card .btn{width:100%}
-.err{color:var(--err);font-size:14px;min-height:20px;margin:0 0 8px}
-button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.app{display:flex;height:100%;max-width:1000px;margin:0 auto;background:var(--panel);border-left:1px solid var(--line);border-right:1px solid var(--line)}
-.side{width:300px;border-right:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
-.side header{padding:16px;border-bottom:1px solid var(--line)}
-.side h2{margin:0;color:var(--accent);font-size:22px}
-.mine{color:var(--muted);font-size:13px;margin-top:2px}
-.mine button{border:0;background:none;color:var(--accent);cursor:pointer;padding:0 0 0 8px}
-.new{display:flex;gap:8px;padding:12px 16px}.new input{flex:1}.new .btn{padding:0 16px}
-#list{overflow-y:auto;flex:1}
-.contact{display:flex;gap:12px;align-items:center;padding:12px 16px;cursor:pointer;border:0;background:none;color:inherit;width:100%;text-align:left}
-.contact:hover,.contact.on{background:var(--bg)}
-.av{width:42px;height:42px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff;font-weight:600;background:var(--me)}
-.ct{min-width:0;flex:1}.ct b{display:block}.ct span{display:block;color:var(--muted);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.empty{padding:24px 16px;color:var(--muted);line-height:1.4}
-.main{flex:1;display:flex;flex-direction:column;min-width:0}
-.top{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);min-height:67px}
-.back{display:none;border:0;background:none;color:var(--accent);font-size:24px;cursor:pointer;padding:0 6px}
-.status{margin-left:auto;font-size:13px;color:var(--muted)}
-.msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:6px}
-.m{max-width:75%;padding:9px 13px;border-radius:18px;line-height:1.35;overflow-wrap:anywhere}
-.m.me{align-self:flex-end;background:var(--me);color:#fff;border-bottom-right-radius:5px}
-.m.them{align-self:flex-start;background:var(--them);border-bottom-left-radius:5px}
-.m small{display:block;font-size:11px;opacity:.7;margin-top:2px}
-.bar{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--line)}
-.bar input{flex:1}
-@media (max-width:640px){.side{width:100%;border:0}.main{display:none}.app.chat .side{display:none}.app.chat .main{display:flex}.back{display:block}}
+:root{color-scheme:light;--bg:#eef3f1;--panel:#fff;--ink:#17302b;--muted:#6b807a;--line:#d6e1dd;--accent:#0f766e;--accent2:#115e59;--bubble:#e3ece9;--danger:#b42318;--shadow:0 18px 55px #163b3210}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0b1412;--panel:#13201c;--ink:#e6f1ed;--muted:#9bb0a9;--line:#293a34;--accent:#2bb9a5;--accent2:#38d4bd;--bubble:#21332d;--danger:#ff8178;--shadow:0 18px 55px #0003}
+*{box-sizing:border-box}html,body{height:100%;margin:0}body{font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}[hidden]{display:none!important}
+.shell{height:100dvh;max-width:1180px;margin:auto;padding:18px;display:flex}.app{display:flex;min-height:0;flex:1;background:var(--panel);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
+.sidebar{width:330px;flex:0 0 330px;display:flex;flex-direction:column;border-right:1px solid var(--line);min-width:0}.brandrow,.chathead{display:flex;align-items:center;gap:12px;padding:18px;border-bottom:1px solid var(--line)}.brand{font-size:23px;font-weight:850;letter-spacing:-.8px;color:var(--accent);margin:0}.brandmark{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:var(--accent);color:white;font-weight:900}.spacer{flex:1}.iconbtn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:12px;width:40px;height:40px;display:grid;place-items:center}.profile{display:flex;align-items:center;gap:10px;padding:14px 18px}.avatar{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;overflow:hidden;font-weight:750;flex:none}.avatar img{width:100%;height:100%;object-fit:cover}.profilecopy{min-width:0;flex:1}.profilecopy strong,.profilecopy span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.profilecopy span{color:var(--muted);font-size:12px}.linkbtn{border:0;background:transparent;color:var(--accent);font-weight:650;padding:6px}.searchrow,.newchat{padding:0 16px 12px}.field{width:100%;min-width:0;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:12px 14px}.newchat{display:flex;gap:8px}.newchat .field{flex:1}.primary{border:0;border-radius:14px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:750;transition:transform .15s,background .15s}.primary:hover{background:var(--accent2)}.primary:active{transform:scale(.98)}.error{color:var(--danger);font-size:13px;padding:0 16px 10px;min-height:4px}.contactlist{overflow:auto;flex:1;padding:4px 8px 12px}.contact{width:100%;display:flex;gap:11px;align-items:center;padding:11px 10px;border:0;background:transparent;color:inherit;border-radius:15px;text-align:left}.contact:hover,.contact.active{background:var(--bg)}.contact .avatar{width:46px;height:46px}.contactcopy{flex:1;min-width:0}.contactcopy strong,.contactcopy span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.contactcopy span{color:var(--muted);font-size:13px}.empty{padding:24px 18px;text-align:center;color:var(--muted)}.main{display:flex;flex:1;min-width:0;flex-direction:column}.chathead{min-height:79px}.back{display:none}.chatwho{min-width:0}.chatwho strong,.chatwho span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.chatwho span{color:var(--muted);font-size:12px}.messages{flex:1;min-height:0;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:9px;background:radial-gradient(ellipse at top right,color-mix(in srgb,var(--accent) 5%,transparent),transparent 50%)}.welcome{margin:auto;text-align:center;max-width:360px;color:var(--muted);padding:24px}.welcome .brandmark{margin:0 auto 12px;width:56px;height:56px;font-size:20px}.bubble{max-width:min(76%,560px);padding:10px 14px;border-radius:18px;overflow-wrap:anywhere;white-space:pre-wrap}.bubble.mine{align-self:flex-end;background:var(--accent);color:white;border-bottom-right-radius:5px}.bubble.theirs{align-self:flex-start;background:var(--bubble);border-bottom-left-radius:5px}.bubble time{display:block;font-size:10px;opacity:.72;margin-top:4px;text-align:right}.compose{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--line)}.compose .field{flex:1;border-radius:18px}.compose .primary{min-width:84px}.status{font-size:12px;color:var(--muted);margin-left:auto}.loginwrap{min-height:100dvh;display:grid;place-items:center;padding:20px}.login{width:min(100%,420px);background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:32px;box-shadow:var(--shadow)}.login .brandmark{margin-bottom:18px}.login h1{font-size:32px;letter-spacing:-1px;margin:0 0 6px}.sub{color:var(--muted);margin:0 0 22px}.login .primary{width:100%;margin-top:8px;padding:13px}.googlemark{display:inline-grid;place-items:center;background:#fff;color:#4285f4;border-radius:50%;width:23px;height:23px;font-weight:900;margin-right:8px}.login input{width:100%;margin-bottom:12px}.notice{font-size:12px;color:var(--muted);margin-top:16px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--panel);padding:11px 16px;border-radius:12px;box-shadow:var(--shadow);z-index:5;max-width:calc(100% - 30px)}
+@media(max-width:720px){.shell{padding:0}.app{border:0;border-radius:0}.sidebar{width:100%;flex-basis:100%;border:0}.main{display:none}.app.showchat .sidebar{display:none}.app.showchat .main{display:flex}.back{display:grid}.brandrow{padding:14px 16px}.chathead{padding:12px}.messages{padding:16px}.bubble{max-width:86%}}
+@media(min-width:721px){.back{display:none}}
 </style>
 </head>
 <body>
-
-<div class="login" id="login">
-  <div class="card">
-    <h1>Textly</h1>
-    <p>Enter your phone number. Other people reach you by typing this number in their chat list.</p>
-    <input id="phone" type="tel" inputmode="tel" placeholder="+966 5X XXX XXXX" autocomplete="tel">
-    <div class="err" id="lerr"></div>
-    <button class="btn" id="go">Start texting</button>
-    <div id="rc"></div>
-    <div id="codeStep" hidden>
-      <input id="code" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="6-digit code">
-      <button class="btn" id="verify">Verify</button>
-      <p style="margin:12px 0 0;font-size:14px"><a href="#" id="change" style="color:var(--accent)">Use a different number</a></p>
+<div class="loginwrap" id="loginView">
+  <section class="login">
+    <div class="brandmark">T</div><h1>Textly</h1>
+    <p class="sub" id="loginIntro">Private conversations, kept simple.</p>
+    <div class="error" id="loginError" role="alert"></div>
+    <button class="primary" id="googleBtn"><span class="googlemark">G</span>Continue with Google</button>
+    <div id="usernameStep" hidden>
+      <label for="usernameInput">Choose your unique username</label>
+      <input class="field" id="usernameInput" maxlength="20" placeholder="e.g. curious_engineer" autocomplete="username" autocapitalize="none">
+      <button class="primary" id="saveUsername">Create account</button>
+      <p class="notice">Use 3–20 letters, numbers, or underscores. Your username is visible to other Textly users.</p>
     </div>
-  </div>
-</div>
-
-<div class="app" id="app" hidden>
-  <aside class="side">
-    <header><h2>Textly</h2><div class="mine"><span id="mine"></span><button id="out">Change number</button></div></header>
-    <div class="new"><input id="to" type="tel" inputmode="tel" placeholder="Number to text"><button class="btn" id="add">Chat</button></div>
-    <div class="err" id="nerr" style="padding:0 16px"></div>
-    <div id="list"></div>
-  </aside>
-  <section class="main">
-    <div class="top"><button class="back" id="back" aria-label="Back to chats">‹</button><div class="av" id="hav"></div><b id="hname"></b><span class="status" id="status">Connecting…</span></div>
-    <div class="msgs" id="msgs" aria-live="polite"></div>
-    <div class="bar"><input id="inp" placeholder="Type a message" autocomplete="off"><button class="btn" id="send">Send</button></div>
+    <p class="notice">Sign-in is handled by Google Firebase Authentication. Never share verification codes or passwords.</p>
   </section>
 </div>
-
+<div class="shell" id="appView" hidden>
+  <div class="app" id="app">
+    <aside class="sidebar">
+      <div class="brandrow"><div class="brandmark">T</div><h1 class="brand">Textly</h1><div class="spacer"></div><button class="iconbtn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">☾</button></div>
+      <div class="profile"><div class="avatar" id="myAvatar">T</div><div class="profilecopy"><strong id="myName">Loading…</strong><span id="myHandle"></span></div><button class="linkbtn" id="signOut">Sign out</button></div>
+      <div class="searchrow"><input class="field" id="search" placeholder="Search conversations" aria-label="Search conversations"></div>
+      <div class="newchat"><input class="field" id="friendInput" placeholder="Friend's username" autocomplete="off" autocapitalize="none" maxlength="20"><button class="primary" id="addFriend">Chat</button></div>
+      <div class="error" id="friendError" role="alert"></div>
+      <div class="contactlist" id="contactList"><div class="empty">Loading conversations…</div></div>
+    </aside>
+    <main class="main">
+      <header class="chathead"><button class="iconbtn back" id="backBtn" aria-label="Back to conversations">‹</button><div class="avatar" id="peerAvatar">T</div><div class="chatwho"><strong id="peerName">Welcome to Textly</strong><span id="peerHandle">Choose a conversation to begin</span></div><div class="status" id="connectionStatus">Connecting…</div></header>
+      <section class="messages" id="messages" aria-live="polite"><div class="welcome"><div class="brandmark">T</div><strong>Your conversations belong here.</strong><p>Choose a friend or start a chat with their username.</p></div></section>
+      <form class="compose" id="composeForm"><input class="field" id="messageInput" placeholder="Write a message…" maxlength="2000" autocomplete="off" disabled aria-label="Message"><button class="primary" id="sendBtn" disabled>Send</button></form>
+    </main>
+  </div>
+</div>
+<div class="toast" id="toast" hidden role="status"></div>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
-// Paste your Firebase web app config here to turn on SMS code verification.
-// Leave apiKey empty and the site works without verification.
-var FIREBASE_CONFIG={apiKey:"AIzaSyAsMGcM1XsoBbEBLXX8_oAx8bi2X5-OggE",authDomain:"textly-47c96.firebaseapp.com",projectId:"textly-47c96",appId:"1:857836621599:web:5332539e4d71adebea2a2a"};
-var USE_SMS=!!(FIREBASE_CONFIG.apiKey&&window.firebase);
-var auth=null,conf=null,rv=null;
-if(USE_SMS){firebase.initializeApp(FIREBASE_CONFIG);auth=firebase.auth()}
-
-// Messages travel through ntfy.sh, a free public relay that needs no account or server of your own.
-var RELAY="https://ntfy.sh/";
-var $=function(i){return document.getElementById(i)};
-var me="",chats={},seen={},cur="",es=null,cs=null,dev="";
-
-function load(){try{var s=JSON.parse(localStorage.getItem("textly2")||"{}");me=s.me||"";chats=s.chats||{};seen=s.seen||{};dev=s.dev||""}catch(e){}
-  if(!dev)dev=Math.random().toString(36).slice(2)+Date.now().toString(36)}
-function save(){try{localStorage.setItem("textly2",JSON.stringify({me:me,chats:chats,seen:seen,dev:dev}))}catch(e){}}
-function norm(s){return String(s).replace(/\D/g,"")}
-function valid(n){return n.length>=8&&n.length<=15}
-function pretty(n){return "+"+n}
-function say(t,ok){var e=$("lerr");e.textContent=t;e.style.color=ok?"var(--accent)":""}
-function fmt(ts){return new Date(ts).toLocaleTimeString([],{hour:"numeric",minute:"2-digit"})}
-
-function topic(n){
-  var s="textly-phone-"+n;
-  if(window.crypto&&crypto.subtle){
-    return crypto.subtle.digest("SHA-256",new TextEncoder().encode(s)).then(function(b){
-      return "tx"+Array.prototype.map.call(new Uint8Array(b),function(x){return ("0"+x.toString(16)).slice(-2)}).join("").slice(0,40)});
+'use strict';
+// This config identifies your Firebase project; it is not an admin secret.
+// Keep Firebase Security Rules enabled and never put service-account keys here.
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAsMGcM1XsoBbEBLXX8_oAx8bi2X5-OggE",
+  authDomain: "textly-47c96.firebaseapp.com",
+  projectId: "textly-47c96",
+  appId: "1:857836621599:web:5332539e4d71adebea2a2a"
+};
+firebase.initializeApp(FIREBASE_CONFIG);
+const auth = firebase.auth();
+const db = firebase.firestore();
+const $ = id => document.getElementById(id);
+let user = null, username = '', currentPeer = null, profileCache = {}, messagesByPeer = {};
+let unsubMessages = null, unsubSessions = null, unsubPeerMessages = null, messageDocs = new Map();
+let deviceId = '';
+try { deviceId = localStorage.getItem('textly_device') || ''; } catch (_) {}
+if (!deviceId) {
+  deviceId = (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2) + Date.now().toString(36));
+  try { localStorage.setItem('textly_device', deviceId); } catch (_) {}
+}
+function setError(id, msg) { $(id).textContent = msg || ''; }
+function toast(msg) { const t = $('toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast.timer); toast.timer = setTimeout(() => t.hidden = true, 3200); }
+function setStatus(s) { $('connectionStatus').textContent = s; }
+function showLogin(msg='') { $('loginView').hidden = false; $('appView').hidden = true; setError('loginError', msg); }
+function showApp() { $('loginView').hidden = true; $('appView').hidden = false; }
+function safeText(v) { return typeof v === 'string' ? v : ''; }
+function initials(name) { return (safeText(name).trim()[0] || 'T').toUpperCase(); }
+function setAvatar(el, photo, name) {
+  el.replaceChildren();
+  if (photo) { const img = document.createElement('img'); img.alt = ''; img.referrerPolicy = 'no-referrer'; img.src = photo; img.onerror = () => { el.textContent = initials(name); }; el.appendChild(img); }
+  else el.textContent = initials(name);
+}
+function fmt(ts) { try { return new Date(ts).toLocaleTimeString([], {hour:'numeric', minute:'2-digit'}); } catch (_) { return ''; } }
+function stopListeners() {
+  [unsubMessages, unsubSessions, unsubPeerMessages].forEach(fn => { if (typeof fn === 'function') fn(); });
+  unsubMessages = unsubSessions = unsubPeerMessages = null;
+}
+function clearAppState() {
+  stopListeners(); currentPeer = null; profileCache = {}; messagesByPeer = {}; messageDocs.clear();
+  $('contactList').replaceChildren(); $('messages').replaceChildren();
+}
+function handleError(e, context='Request failed') {
+  console.error(context, e);
+  const code = e && e.code ? e.code : 'unknown';
+  const details = {
+    'permission-denied':'Firebase denied this action. Check the deployed Firestore rules.',
+    'unavailable':'Firebase is temporarily unavailable. Check your connection and retry.',
+    'auth/popup-blocked':'The sign-in popup was blocked. Allow popups or try again.',
+    'auth/popup-closed-by-user':'The sign-in window was closed before finishing.',
+    'auth/unauthorized-domain':'Add this website hostname under Firebase Authentication → Settings → Authorized domains.',
+    'auth/network-request-failed':'Network request failed. Check your internet connection.'
+  };
+  return details[code] || details[e && e.code] || `${context} (${code}).`;
+}
+async function loadOwnProfile(u) {
+  const snap = await db.collection('users').doc(u.uid).get();
+  if (snap.exists) { username = snap.data().username; return true; }
+  username = '';
+  return false;
+}
+async function startApp() {
+  clearAppState(); showApp();
+  $('myName').textContent = user.displayName || 'Textly user';
+  $('myHandle').textContent = username ? '@' + username : '';
+  setAvatar($('myAvatar'), user.photoURL, user.displayName);
+  $('messageInput').disabled = true; $('sendBtn').disabled = true;
+  setStatus('Connecting…');
+  try {
+    // Session marker is informational/single-active-device behavior, not an authentication boundary.
+    const sessionRef = db.collection('sessions').doc(user.uid);
+    await sessionRef.set({ deviceId, updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
+    unsubSessions = sessionRef.onSnapshot(s => {
+      if (s.exists && s.data().deviceId !== deviceId) {
+        stopListeners(); auth.signOut().catch(console.error);
+        showLogin('This account was signed in on another device. Please sign in again.');
+      }
+    }, e => { setStatus(handleError(e, 'Session check failed')); });
+    unsubMessages = db.collection('messages').where('participants', 'array-contains', user.uid)
+      .onSnapshot(snap => {
+        const next = new Map();
+        snap.forEach(doc => next.set(doc.id, {...doc.data(), id:doc.id}));
+        messageDocs = next;
+        rebuildConversations();
+      }, e => { setStatus(handleError(e, 'Could not load messages')); });
+    setStatus('Online');
+  } catch (e) {
+    setStatus(handleError(e, 'Could not start Textly'));
+    toast(handleError(e, 'Could not start Textly'));
   }
-  return Promise.resolve("tx"+btoa(s).replace(/\W/g,"").slice(0,40));
 }
-
-function addMsg(num,m){
-  if(!chats[num])chats[num]=[];
-  chats[num].push(m);
-  chats[num].sort(function(a,b){return a.ts-b.ts});
+function rebuildConversations() {
+  const map = {};
+  // Keep explicitly opened empty chats even before the first message is sent.
+  Object.keys(profileCache).forEach(uid => { if (uid !== user.uid) map[uid] = {peer:profileCache[uid], messages:[]}; });
+  messageDocs.forEach(m => {
+    const peerId = m.from === user.uid ? m.to : m.from;
+    if (!peerId || peerId === user.uid) return;
+    if (!map[peerId]) map[peerId] = {peer:profileCache[peerId] || {uid:peerId, username:m.from===user.uid?m.toName:m.fromName}, messages:[]};
+    map[peerId].messages.push(m);
+  });
+  Object.values(map).forEach(c => c.messages.sort((a,b) => (a.ts||0)-(b.ts||0)));
+  messagesByPeer = map; renderContacts(); renderMessages();
 }
-
-function connect(){
-  if(es)es.close();
-  topic(me).then(function(t){
-    es=new EventSource(RELAY+t+"/sse?since=all");
-    es.onopen=function(){$("status").textContent="Online"};
-    es.onerror=function(){$("status").textContent="Reconnecting…"};
-    es.onmessage=function(e){
-      var d;try{d=JSON.parse(e.data)}catch(x){return}
-      if(d.event!=="message"||seen[d.id])return;
-      seen[d.id]=1;
-      var p;try{p=JSON.parse(d.message)}catch(x){return}
-      var from=norm(p.from||"");
-      if(!valid(from)||from===me||typeof p.text!=="string")return;
-      addMsg(from,{me:false,t:p.text.slice(0,2000),ts:p.ts||d.time*1000});
-      save();render();
-    };
+function renderContacts() {
+  const list = $('contactList'); list.replaceChildren();
+  const q = $('search').value.trim().toLowerCase();
+  const ids = Object.keys(messagesByPeer).filter(id => {
+    const p = messagesByPeer[id].peer || {};
+    return !q || safeText(p.username).toLowerCase().includes(q) || safeText(messagesByPeer[id].messages.at(-1)?.text).toLowerCase().includes(q);
+  }).sort((a,b) => {
+    const aa = messagesByPeer[a].messages.at(-1)?.ts || 0, bb = messagesByPeer[b].messages.at(-1)?.ts || 0;
+    return bb-aa;
+  });
+  if (!ids.length) { const d=document.createElement('div'); d.className='empty'; d.textContent=q?'No matching conversations.':'No conversations yet. Search a friend’s username above to start one.'; list.appendChild(d); return; }
+  ids.forEach(id => {
+    const c=messagesByPeer[id], p=c.peer||{}, last=c.messages.at(-1);
+    const b=document.createElement('button'); b.className='contact'+(id===currentPeer?' active':''); b.type='button';
+    const av=document.createElement('div'); av.className='avatar'; setAvatar(av,p.photoURL,p.username);
+    const copy=document.createElement('div'); copy.className='contactcopy';
+    const strong=document.createElement('strong'); strong.textContent='@'+(p.username||'user');
+    const span=document.createElement('span'); span.textContent=last?(last.from===user.uid?'You: ':'')+safeText(last.text):'Start a conversation';
+    copy.append(strong,span); b.append(av,copy); b.onclick=()=>openChat(id); list.appendChild(b);
   });
 }
-
-function send(){
-  var v=$("inp").value.trim();if(!v||!cur)return;
-  var to=cur;$("inp").value="";
-  addMsg(to,{me:true,t:v,ts:Date.now()});save();render();
-  topic(to).then(function(t){
-    return fetch(RELAY+t,{method:"POST",body:JSON.stringify({from:me,text:v,ts:Date.now()})});
-  }).then(function(r){if(!r.ok)throw 0}).catch(function(){$("status").textContent="Message may not have sent"});
-}
-
-function render(){
-  var l=$("list");l.innerHTML="";
-  var nums=Object.keys(chats).sort(function(a,b){var x=chats[a],y=chats[b];return y[y.length-1].ts-x[x.length-1].ts});
-  if(!nums.length){var e=document.createElement("div");e.className="empty";e.textContent="No chats yet. Type a phone number above to start one, or share your number so others can text you.";l.appendChild(e)}
-  nums.forEach(function(n){
-    var last=chats[n][chats[n].length-1];
-    var b=document.createElement("button");b.className="contact"+(n===cur?" on":"");
-    var a=document.createElement("div");a.className="av";a.textContent="#";
-    var c=document.createElement("div");c.className="ct";
-    var nm=document.createElement("b");nm.textContent=pretty(n);
-    var sp=document.createElement("span");sp.textContent=(last.me?"You: ":"")+last.t;
-    c.appendChild(nm);c.appendChild(sp);b.appendChild(a);b.appendChild(c);
-    b.onclick=function(){openChat(n)};l.appendChild(b);
+function renderMessages() {
+  const area=$('messages'); area.replaceChildren();
+  const c=currentPeer && messagesByPeer[currentPeer];
+  if (!c) {
+    const w=document.createElement('div'); w.className='welcome'; const mark=document.createElement('div'); mark.className='brandmark'; mark.textContent='T';
+    const strong=document.createElement('strong'); strong.textContent='Your conversations belong here.';
+    const p=document.createElement('p'); p.textContent='Choose a friend or start a chat with their username.';
+    w.append(mark,strong,p); area.appendChild(w); $('peerName').textContent='Welcome to Textly'; $('peerHandle').textContent='Choose a conversation to begin'; setAvatar($('peerAvatar'),'','Textly'); return;
+  }
+  const p=c.peer||{}; $('peerName').textContent=p.displayName||('@'+(p.username||'user')); $('peerHandle').textContent='@'+(p.username||'user'); setAvatar($('peerAvatar'),p.photoURL,p.username);
+  c.messages.forEach(m => {
+    const b=document.createElement('div'); b.className='bubble '+(m.from===user.uid?'mine':'theirs');
+    b.appendChild(document.createTextNode(safeText(m.text)));
+    const time=document.createElement('time'); time.textContent=fmt(m.ts); b.appendChild(time); area.appendChild(b);
   });
-  var m=$("msgs");m.innerHTML="";
-  if(cur){
-    $("hname").textContent=pretty(cur);$("hav").textContent="#";
-    (chats[cur]||[]).forEach(function(x){
-      var d=document.createElement("div");d.className="m "+(x.me?"me":"them");
-      d.appendChild(document.createTextNode(x.t));
-      var s=document.createElement("small");s.textContent=fmt(x.ts);d.appendChild(s);m.appendChild(d);
+  area.scrollTop=area.scrollHeight;
+}
+async function openChat(uid) {
+  if (!uid || uid===user.uid) return;
+  currentPeer=uid;
+  if (!profileCache[uid]) {
+    try {
+      const snap=await db.collection('users').doc(uid).get();
+      if (!snap.exists) { toast('This user account could not be found.'); currentPeer=null; return; }
+      profileCache[uid]={uid, ...snap.data()};
+    } catch(e) { toast(handleError(e,'Could not load friend profile')); return; }
+  }
+  if (!messagesByPeer[uid]) messagesByPeer[uid]={peer:profileCache[uid],messages:[]};
+  else messagesByPeer[uid].peer=profileCache[uid];
+  $('app').classList.add('showchat'); $('messageInput').disabled=false; $('sendBtn').disabled=false;
+  renderContacts(); renderMessages(); $('messageInput').focus();
+}
+async function addFriend() {
+  const n=$('friendInput').value.trim().toLowerCase().replace(/^@/,'');
+  setError('friendError','');
+  if (!/^[a-z0-9_]{3,20}$/.test(n)) { setError('friendError','Usernames must be 3–20 letters, numbers, or underscores.'); return; }
+  if (n===username) { setError('friendError','That is your own username.'); return; }
+  $('addFriend').disabled=true;
+  try {
+    const snap=await db.collection('usernames').doc(n).get();
+    if (!snap.exists) { setError('friendError','No user called @'+n+'.'); return; }
+    const uid=snap.data().uid;
+    if (uid===user.uid) { setError('friendError','That is your own username.'); return; }
+    const profile=await db.collection('users').doc(uid).get();
+    if (!profile.exists || profile.data().username!==n) { setError('friendError','That username is not available.'); return; }
+    profileCache[uid]={uid,...profile.data()};
+    $('friendInput').value='';
+    if (!messagesByPeer[uid]) messagesByPeer[uid]={peer:profileCache[uid],messages:[]};
+    rebuildConversations();
+    await openChat(uid);
+  } catch(e) { setError('friendError',handleError(e,'Could not find that user')); }
+  finally { $('addFriend').disabled=false; }
+}
+async function sendMessage() {
+  const input=$('messageInput'), text=input.value.trim();
+  if (!text || !currentPeer || !user) return;
+  const peer=messagesByPeer[currentPeer]?.peer || profileCache[currentPeer];
+  if (!peer) { toast('Choose a valid conversation first.'); return; }
+  const send=$('sendBtn'); send.disabled=true;
+  try {
+    await db.collection('messages').add({
+      from:user.uid, fromName:username, to:currentPeer, toName:peer.username || '',
+      participants:[user.uid,currentPeer], text:text.slice(0,2000), ts:Date.now()
     });
-    m.scrollTop=m.scrollHeight;
-  }else{$("hname").textContent="Pick a chat";$("hav").textContent=""}
+    input.value='';
+  } catch(e) { toast(handleError(e,'Message was not sent')); }
+  finally { send.disabled=false; input.focus(); }
 }
-
-function openChat(n){cur=n;$("app").classList.add("chat");render();$("inp").focus()}
-
-// One device per number: the newest sign-in claims the number and any older device is signed out.
-function claim(){
-  if(cs)cs.close();
-  var sent=false;
-  topic("claim-"+me).then(function(t){
-    cs=new EventSource(RELAY+t+"/sse");
-    cs.onmessage=function(e){
-      var d,p;try{d=JSON.parse(e.data);if(d.event!=="message")return;p=JSON.parse(d.message)}catch(x){return}
-      if(p.dev&&p.dev!==dev)kicked();
-    };
-    cs.onopen=function(){
-      if(sent)return;sent=true;
-      fetch(RELAY+t,{method:"POST",body:JSON.stringify({dev:dev,ts:Date.now()})}).catch(function(){});
-    };
-  });
-}
-function checkClaim(){
-  return topic("claim-"+me).then(function(t){return fetch(RELAY+t+"/json?poll=1&since=all")})
-    .then(function(r){return r.text()})
-    .then(function(txt){
-      var last=null;
-      txt.split("\n").forEach(function(line){try{var d=JSON.parse(line);if(d.event==="message")last=JSON.parse(d.message)}catch(x){}});
-      return !last||last.dev===dev;
-    }).catch(function(){return true});
-}
-function kicked(){
-  if(es)es.close();if(cs)cs.close();
-  me="";cur="";save();
-  if(auth)auth.signOut();resetLogin();
-  $("app").hidden=true;$("login").hidden=false;
-  say("This number is signed in on another device. Enter it again to use it here instead.");
-}
-function enter(resume){
-  $("login").hidden=true;$("app").hidden=false;
-  $("mine").textContent="You: "+pretty(me);
-  render();
-  if(resume){checkClaim().then(function(ok){if(ok){claim();connect()}else kicked()})}
-  else{claim();connect()}
-}
-
-$("go").onclick=function(){
-  var n=norm($("phone").value);
-  if(!valid(n)){$("lerr").textContent="Enter a full number with country code, like +966501234567.";return}
-  if(!USE_SMS){me=n;save();enter();return}
-  $("go").disabled=true;say("Sending code…",true);
-  rv=makeVerifier();
-  auth.signInWithPhoneNumber("+"+n,rv).then(function(c){
-    conf=c;say("Code sent by SMS.",true);
-    $("codeStep").hidden=false;$("go").hidden=true;$("phone").disabled=true;$("code").focus();
-  }).catch(function(e){
-    $("go").disabled=false;say("Couldn't send the code ("+(e.code||e.message||e)+").");
-    try{rv.clear()}catch(x){}rv=null;
-  });
-};
-function makeVerifier(){
-  try{if(rv)rv.clear()}catch(x){}
-  var old=$("rc"),fresh=document.createElement("div");
-  fresh.id="rc";old.parentNode.replaceChild(fresh,old);
-  return new firebase.auth.RecaptchaVerifier("rc",{size:"invisible"});
-}
-function resetLogin(){
-  $("codeStep").hidden=true;$("go").hidden=false;$("go").disabled=false;
-  $("phone").disabled=false;$("code").value="";say("");conf=null;
-  try{if(rv)rv.clear()}catch(x){}rv=null;
-}
-$("verify").onclick=function(){
-  var c=$("code").value.trim();if(!c||!conf)return;
-  say("Checking…",true);
-  conf.confirm(c).then(function(r){me=norm(r.user.phoneNumber);save();resetLogin();enter()})
-    .catch(function(){say("That code is wrong. Try again.")});
-};
-$("code").onkeydown=function(e){if(e.key==="Enter")$("verify").click()};
-$("change").onclick=function(e){e.preventDefault();resetLogin()};
-if(USE_SMS)$("go").textContent="Send code";
-$("phone").onkeydown=function(e){if(e.key==="Enter")$("go").click()};
-$("add").onclick=function(){
-  var n=norm($("to").value);
-  if(!valid(n)){$("nerr").textContent="Enter a full number with country code.";return}
-  if(n===me){$("nerr").textContent="That's your own number.";return}
-  $("nerr").textContent="";$("to").value="";
-  if(!chats[n])chats[n]=[{me:false,t:"Chat started. Say hello!",ts:Date.now()}];
-  save();openChat(n);
-};
-$("to").onkeydown=function(e){if(e.key==="Enter")$("add").click()};
-$("send").onclick=send;
-$("inp").onkeydown=function(e){if(e.key==="Enter")send()};
-$("back").onclick=function(){$("app").classList.remove("chat")};
-$("out").onclick=function(){
-  if(es)es.close();if(cs)cs.close();me="";cur="";save();
-  if(auth)auth.signOut();resetLogin();
-  $("app").hidden=true;$("login").hidden=false;$("phone").value="";
-};
-
-load();
-if(me){
-  if(USE_SMS){
-    var done=false;
-    auth.onAuthStateChanged(function(u){
-      if(done)return;done=true;
-      if(u&&u.phoneNumber&&norm(u.phoneNumber)===me)enter(true);
-      else{me="";save()}
+async function createUsername() {
+  const n=$('usernameInput').value.trim().toLowerCase().replace(/^@/,'');
+  if (!/^[a-z0-9_]{3,20}$/.test(n)) { setError('loginError','Use 3–20 lowercase letters, numbers, or underscores.'); return; }
+  $('saveUsername').disabled=true; setError('loginError','Creating your account…');
+  try {
+    const usernameRef=db.collection('usernames').doc(n), userRef=db.collection('users').doc(user.uid);
+    await db.runTransaction(async tx => {
+      const existing=await tx.get(usernameRef);
+      if (existing.exists) throw new Error('USERNAME_TAKEN');
+      tx.set(usernameRef,{uid:user.uid,createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+      tx.set(userRef,{username:n,displayName:user.displayName||'',photoURL:user.photoURL||'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
     });
-  }else enter(true);
+    username=n; setError('loginError',''); await startApp();
+  } catch(e) {
+    setError('loginError',e.message==='USERNAME_TAKEN'?'That username is taken. Try another.':handleError(e,'Could not create your account'));
+  } finally { $('saveUsername').disabled=false; }
 }
+$('googleBtn').addEventListener('click', async () => {
+  setError('loginError','');
+  const provider=new firebase.auth.GoogleAuthProvider();
+  try { await auth.signInWithPopup(provider); }
+  catch(e) {
+    if (e.code==='auth/popup-blocked' || e.code==='auth/operation-not-supported-in-this-environment') {
+      try { await auth.signInWithRedirect(provider); } catch(err) { setError('loginError',handleError(err,'Google sign-in failed')); }
+    } else if (e.code!=='auth/popup-closed-by-user') setError('loginError',handleError(e,'Google sign-in failed'));
+  }
+});
+auth.getRedirectResult().catch(e=>setError('loginError',handleError(e,'Google sign-in failed')));
+auth.onAuthStateChanged(async u => {
+  user=u;
+  if (!u) {
+    clearAppState(); showLogin(); $('googleBtn').hidden=false; $('usernameStep').hidden=true;
+    $('loginIntro').textContent='Private conversations, kept simple.'; return;
+  }
+  $('googleBtn').hidden=true;
+  try {
+    const exists=await loadOwnProfile(u);
+    if (!exists) { $('loginView').hidden=false; $('appView').hidden=true; $('usernameStep').hidden=false; $('loginIntro').textContent='One last step: choose your Textly username.'; }
+    else await startApp();
+  } catch(e) { showLogin(handleError(e,'Could not load your account')); }
+});
+$('saveUsername').addEventListener('click',createUsername);
+$('usernameInput').addEventListener('keydown',e=>{if(e.key==='Enter')createUsername();});
+$('addFriend').addEventListener('click',addFriend);
+$('friendInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addFriend();}});
+$('search').addEventListener('input',renderContacts);
+$('composeForm').addEventListener('submit',e=>{e.preventDefault();sendMessage();});
+$('backBtn').addEventListener('click',()=>$('app').classList.remove('showchat'));
+$('signOut').addEventListener('click',async()=>{stopListeners();try{await auth.signOut();}catch(e){toast(handleError(e,'Sign out failed'));}});
+$('themeBtn').addEventListener('click',()=>{
+  const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=next; $('themeBtn').textContent=next==='dark'?'☀':'☾';
+  try{localStorage.setItem('textly_theme',next);}catch(_){}
+});
+try { const saved=localStorage.getItem('textly_theme'); if(saved==='dark'||saved==='light'){document.documentElement.dataset.theme=saved;$('themeBtn').textContent=saved==='dark'?'☀':'☾';} } catch(_){}
 </script>
 </body>
 </html>
