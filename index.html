@@ -57,6 +57,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
     <input id="phone" type="tel" inputmode="tel" placeholder="+966 5X XXX XXXX" autocomplete="tel">
     <div class="err" id="lerr"></div>
     <button class="btn" id="go">Start texting</button>
+    <div id="rc"></div>
     <div id="codeStep" hidden>
       <input id="code" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="6-digit code">
       <button class="btn" id="verify">Verify</button>
@@ -100,6 +101,7 @@ function save(){try{localStorage.setItem("textly2",JSON.stringify({me:me,chats:c
 function norm(s){return String(s).replace(/\D/g,"")}
 function valid(n){return n.length>=8&&n.length<=15}
 function pretty(n){return "+"+n}
+function say(t,ok){var e=$("lerr");e.textContent=t;e.style.color=ok?"var(--accent)":""}
 function fmt(ts){return new Date(ts).toLocaleTimeString([],{hour:"numeric",minute:"2-digit"})}
 
 function topic(n){
@@ -157,7 +159,7 @@ function render(){
     var nm=document.createElement("b");nm.textContent=pretty(n);
     var sp=document.createElement("span");sp.textContent=(last.me?"You: ":"")+last.t;
     c.appendChild(nm);c.appendChild(sp);b.appendChild(a);b.appendChild(c);
-    b.onclick=function(){open(n)};l.appendChild(b);
+    b.onclick=function(){openChat(n)};l.appendChild(b);
   });
   var m=$("msgs");m.innerHTML="";
   if(cur){
@@ -171,7 +173,7 @@ function render(){
   }else{$("hname").textContent="Pick a chat";$("hav").textContent=""}
 }
 
-function open(n){cur=n;$("app").classList.add("chat");render();$("inp").focus()}
+function openChat(n){cur=n;$("app").classList.add("chat");render();$("inp").focus()}
 
 // One device per number: the newest sign-in claims the number and any older device is signed out.
 function claim(){
@@ -203,7 +205,7 @@ function kicked(){
   me="";cur="";save();
   if(auth)auth.signOut();resetLogin();
   $("app").hidden=true;$("login").hidden=false;
-  $("lerr").textContent="This number is signed in on another device. Enter it again to use it here instead.";
+  say("This number is signed in on another device. Enter it again to use it here instead.");
 }
 function enter(resume){
   $("login").hidden=true;$("app").hidden=false;
@@ -217,26 +219,26 @@ $("go").onclick=function(){
   var n=norm($("phone").value);
   if(!valid(n)){$("lerr").textContent="Enter a full number with country code, like +966501234567.";return}
   if(!USE_SMS){me=n;save();enter();return}
-  $("go").disabled=true;$("lerr").textContent="Sending code…";
-  if(!rv)rv=new firebase.auth.RecaptchaVerifier("go",{size:"invisible"});
+  $("go").disabled=true;say("Sending code…",true);
+  if(!rv)rv=new firebase.auth.RecaptchaVerifier("rc",{size:"invisible"});
   auth.signInWithPhoneNumber("+"+n,rv).then(function(c){
-    conf=c;$("lerr").textContent="Code sent by SMS.";
+    conf=c;say("Code sent by SMS.",true);
     $("codeStep").hidden=false;$("go").hidden=true;$("phone").disabled=true;$("code").focus();
   }).catch(function(e){
-    $("go").disabled=false;$("lerr").textContent="Couldn't send the code ("+(e.code||"error")+").";
+    $("go").disabled=false;say("Couldn't send the code ("+(e.code||e.message||e)+").");
     try{rv.clear()}catch(x){}rv=null;
   });
 };
 function resetLogin(){
   $("codeStep").hidden=true;$("go").hidden=false;$("go").disabled=false;
-  $("phone").disabled=false;$("code").value="";$("lerr").textContent="";conf=null;
+  $("phone").disabled=false;$("code").value="";say("");conf=null;
   try{if(rv)rv.clear()}catch(x){}rv=null;
 }
 $("verify").onclick=function(){
   var c=$("code").value.trim();if(!c||!conf)return;
-  $("lerr").textContent="Checking…";
+  say("Checking…",true);
   conf.confirm(c).then(function(r){me=norm(r.user.phoneNumber);save();resetLogin();enter()})
-    .catch(function(){$("lerr").textContent="That code is wrong. Try again."});
+    .catch(function(){say("That code is wrong. Try again.")});
 };
 $("code").onkeydown=function(e){if(e.key==="Enter")$("verify").click()};
 $("change").onclick=function(e){e.preventDefault();resetLogin()};
@@ -248,7 +250,7 @@ $("add").onclick=function(){
   if(n===me){$("nerr").textContent="That's your own number.";return}
   $("nerr").textContent="";$("to").value="";
   if(!chats[n])chats[n]=[{me:false,t:"Chat started. Say hello!",ts:Date.now()}];
-  save();open(n);
+  save();openChat(n);
 };
 $("to").onkeydown=function(e){if(e.key==="Enter")$("add").click()};
 $("send").onclick=send;
@@ -263,8 +265,9 @@ $("out").onclick=function(){
 load();
 if(me){
   if(USE_SMS){
-    var un=auth.onAuthStateChanged(function(u){
-      un();
+    var done=false;
+    auth.onAuthStateChanged(function(u){
+      if(done)return;done=true;
       if(u&&u.phoneNumber&&norm(u.phoneNumber)===me)enter(true);
       else{me="";save()}
     });
