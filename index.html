@@ -10,7 +10,7 @@
 :root[data-theme="dark"]{color-scheme:dark;--bg:#0b1412;--panel:#13201c;--ink:#e6f1ed;--muted:#9bb0a9;--line:#293a34;--accent:#2bb9a5;--accent2:#38d4bd;--bubble:#21332d;--danger:#ff8178;--shadow:0 18px 55px #0003}
 *{box-sizing:border-box}html,body{height:100%;margin:0}body{font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}[hidden]{display:none!important}
 .shell{height:100dvh;max-width:1180px;margin:auto;padding:18px;display:flex}.app{display:flex;min-height:0;flex:1;background:var(--panel);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
-.sidebar{width:330px;flex:0 0 330px;display:flex;flex-direction:column;border-right:1px solid var(--line);min-width:0}.brandrow,.chathead{display:flex;align-items:center;gap:12px;padding:18px;border-bottom:1px solid var(--line)}.brand{font-size:23px;font-weight:850;letter-spacing:-.8px;color:var(--accent);margin:0}.brandmark{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:var(--accent);color:white;font-weight:900}.spacer{flex:1}.iconbtn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:12px;width:40px;height:40px;display:grid;place-items:center}.profile{display:flex;align-items:center;gap:10px;padding:14px 18px}.avatar{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;overflow:hidden;font-weight:750;flex:none}.avatar img{width:100%;height:100%;object-fit:cover}.profilecopy{min-width:0;flex:1}.profilecopy strong,.profilecopy span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.profilecopy span{color:var(--muted);font-size:12px}.linkbtn{border:0;background:transparent;color:var(--accent);font-weight:650;padding:6px}.searchrow,.newchat{padding:0 16px 12px}.field{width:100%;min-width:0;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:12px 14px}.newchat{display:flex;gap:8px}.newchat .field{flex:1}.primary{border:0;border-radius:14px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:750;transition:transform .15s,background .15s}.primary:hover{background:var(--accent2)}.primary:active{transform:scale(.98)}.error{color:var(--danger);font-size:13px;padding:0 16px 10px;min-height:4px}.contactlist{overflow:auto;flex:1;padding:4px 8px 12px}.contact{width:100%;display:flex;gap:11px;align-items:center;padding:11px 10px;border:0;background:transparent;color:inherit;border-radius:15px;text-align:left}.contact:hover,.contact.active{background:var(--bg)}.contact .avatar{width:46px;height:46px}.contactcopy{flex:1;min-width:0}.contactcopy strong,.contactcopy span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.contactcopy span{color:var(--muted);font-size:13px}.empty{padding:24px 18px;text-align:center;color:var(--muted)}.main{display:flex;flex:1;min-width:0;flex-direction:column}.chathead{min-height:79px}.back{display:none}.chatwho{min-width:0}.chatwho strong,.chatwho span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.chatwho span{color:var(--muted);font-size:12px}.messages{flex:1;min-height:0;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:9px;background:radial-gradient(ellipse at top right,color-mix(in srgb,var(--accent) 5%,transparent),transparent 50%)}.welcome{margin:auto;text-align:center;max-width:360px;color:var(--muted);padding:24px}.welcome .brandmark{margin:0 auto 12px;width:56px;height:56px;font-size:20px}.bubble{max-width:min(76%,560px);padding:10px 14px;border-radius:18px;overflow-wrap:anywhere;white-space:pre-wrap}.bubble.mine{align-self:flex-end;background:var(--accent);color:white;border-bottom-right-radius:5px}.bubble.theirs{align-self:flex-start;background:var(--bubble);border-bottom-left-radius:5px}.bubble time{display:block;font-size:10px;opacity:.72;margin-top:4px;text-align:right}.compose{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--line)}.compose .field{flex:1;border-radius:18px}.compose .primary{min-width:84px}.status{font-size:12px;color:var(--muted);margin-left:auto}.loginwrap{min-height:100dvh;display:grid;place-items:center;padding:20px}.login{width:min(100%,420px);background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:32px;box-shadow:var(--shadow)}.login .brandmark{margin-bottom:18px}.login h1{font-size:32px;letter-spacing:-1px;margin:0 0 6px}.sub{color:var(--muted);margin:0 0 22px}.login .primary{width:100%;margin-top:8px;padding:13px}.googlemark{display:inline-grid;place-items:center;background:#fff;color:#4285f4;border-radius:50%;width:23px;height:23px;font-weight:900;margin-right:8px}.login input{width:100%;margin-bottom:12px}.notice{font-size:12px;color:var(--muted);margin-top:16px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--panel);padding:11px 16px;border-radius:12px;box-shadow:var(--shadow);z-index:5;max-width:calc(100% - 30px)}
+.sidebar{width:330px;flex:0 0 330px;display:flex;flex-direction:column;border-right:1px solid var(--line);min-width:0}.brandrow,.chathead{display:flex;align-items:center;gap:12px;padding:18px;border-bottom:1px solid var(--line)}.brand{font-size:23px;font-weight:850;letter-spacing:-.8px;color:var(--accent);margin:0}.brandmark{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:var(--accent);color:white;font-weight:900}.spacer{flex:1}.iconbtn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:12px;width:40px;height:40px;display:grid;place-items:center}.profile{display:flex;align-items:center;gap:10px;padding:14px 18px}.avatar{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;overflow:hidden;font-weight:750;flex:none}.avatar img{width:100%;height:100%;object-fit:cover}.profilecopy{min-width:0;flex:1}.profilecopy strong,.profilecopy span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.profilecopy span{color:var(--muted);font-size:12px}.linkbtn{border:0;background:transparent;color:var(--accent);font-weight:650;padding:6px}.searchrow,.newchat{padding:0 16px 12px}.field{width:100%;min-width:0;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:12px 14px}.newchat{display:flex;gap:8px}.newchat .field{flex:1}.primary{border:0;border-radius:14px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:750;transition:transform .15s,background .15s}.primary:hover{background:var(--accent2)}.primary:active{transform:scale(.98)}.error{color:var(--danger);font-size:13px;padding:0 16px 10px;min-height:4px}.contactlist{overflow:auto;flex:1;padding:4px 8px 12px}.contact{width:100%;display:flex;gap:11px;align-items:center;padding:11px 10px;border:0;background:transparent;color:inherit;border-radius:15px;text-align:left}.contact:hover,.contact.active{background:var(--bg)}.contact .avatar{width:46px;height:46px}.contactcopy{flex:1;min-width:0}.contactcopy strong,.contactcopy span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.contactcopy span{color:var(--muted);font-size:13px}.empty{padding:24px 18px;text-align:center;color:var(--muted)}.main{display:flex;flex:1;min-width:0;flex-direction:column}.chathead{min-height:79px}.back{display:none}.chatwho{min-width:0}.chatwho strong,.chatwho span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.chatwho span{color:var(--muted);font-size:12px}.messages{flex:1;min-height:0;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:9px;background:radial-gradient(ellipse at top right,color-mix(in srgb,var(--accent) 5%,transparent),transparent 50%)}.welcome{margin:auto;text-align:center;max-width:360px;color:var(--muted);padding:24px}.welcome .brandmark{margin:0 auto 12px;width:56px;height:56px;font-size:20px}.bubble{max-width:min(76%,560px);padding:10px 14px;border-radius:18px;overflow-wrap:anywhere;white-space:pre-wrap}.bubble.mine{align-self:flex-end;background:var(--accent);color:white;border-bottom-right-radius:5px}.bubble.theirs{align-self:flex-start;background:var(--bubble);border-bottom-left-radius:5px}.bubble time{display:block;font-size:10px;opacity:.72;margin-top:4px;text-align:right}.compose{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--line)}.compose .field{flex:1;border-radius:18px}.compose .primary{min-width:84px}.status{font-size:12px;color:var(--muted);margin-left:auto}.callbtn{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:9px 12px;font-weight:700}.voicecontrols{display:flex;gap:8px;align-items:center}.voicecontrols button{white-space:nowrap}.bubble audio{display:block;max-width:min(270px,70vw);width:100%;margin:4px 0}.callpanel{position:fixed;inset:auto 16px 16px auto;z-index:8;width:min(360px,calc(100% - 32px));padding:18px;border:1px solid var(--line);border-radius:20px;background:var(--panel);box-shadow:var(--shadow)}.callpanel strong{display:block;margin-bottom:5px}.callpanel p{color:var(--muted);font-size:13px;margin:0 0 12px}.callactions{display:flex;gap:8px;flex-wrap:wrap}.danger{background:#b42318!important}.recording{outline:2px solid #b42318!important}.loginwrap{min-height:100dvh;display:grid;place-items:center;padding:20px}.login{width:min(100%,420px);background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:32px;box-shadow:var(--shadow)}.login .brandmark{margin-bottom:18px}.login h1{font-size:32px;letter-spacing:-1px;margin:0 0 6px}.sub{color:var(--muted);margin:0 0 22px}.login .primary{width:100%;margin-top:8px;padding:13px}.googlemark{display:inline-grid;place-items:center;background:#fff;color:#4285f4;border-radius:50%;width:23px;height:23px;font-weight:900;margin-right:8px}.login input{width:100%;margin-bottom:12px}.notice{font-size:12px;color:var(--muted);margin-top:16px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--panel);padding:11px 16px;border-radius:12px;box-shadow:var(--shadow);z-index:5;max-width:calc(100% - 30px)}
 @media(max-width:720px){.shell{padding:0}.app{border:0;border-radius:0}.sidebar{width:100%;flex-basis:100%;border:0}.main{display:none}.app.showchat .sidebar{display:none}.app.showchat .main{display:flex}.back{display:grid}.brandrow{padding:14px 16px}.chathead{padding:12px}.messages{padding:16px}.bubble{max-width:86%}}
 @media(min-width:721px){.back{display:none}}
 </style>
@@ -42,13 +42,13 @@
       <div class="contactlist" id="contactList"><div class="empty">Loading conversations…</div></div>
     </aside>
     <main class="main">
-      <header class="chathead"><button class="iconbtn back" id="backBtn" aria-label="Back to conversations">‹</button><div class="avatar" id="peerAvatar">T</div><div class="chatwho"><strong id="peerName">Welcome to Textly</strong><span id="peerHandle">Choose a conversation to begin</span></div><div class="status" id="connectionStatus">Connecting…</div></header>
+      <header class="chathead"><button class="iconbtn back" id="backBtn" aria-label="Back to conversations">‹</button><div class="avatar" id="peerAvatar">T</div><div class="chatwho"><strong id="peerName">Welcome to Textly</strong><span id="peerHandle">Choose a conversation to begin</span></div><div class="status" id="connectionStatus">Connecting…</div><button class="callbtn" id="callBtn" disabled title="Start voice call">☎ Call</button></header>
       <section class="messages" id="messages" aria-live="polite"><div class="welcome"><div class="brandmark">T</div><strong>Your conversations belong here.</strong><p>Choose a friend or start a chat with their username.</p></div></section>
-      <form class="compose" id="composeForm"><input class="field" id="messageInput" placeholder="Write a message…" maxlength="2000" autocomplete="off" disabled aria-label="Message"><button class="primary" id="sendBtn" disabled>Send</button></form>
+      <form class="compose" id="composeForm"><input class="field" id="messageInput" placeholder="Write a message…" maxlength="2000" autocomplete="off" disabled aria-label="Message"><div class="voicecontrols"><button class="callbtn" type="button" id="recordBtn" disabled title="Record voice message">🎙 Voice</button><button class="primary" id="sendBtn" disabled>Send</button></div></form>
     </main>
   </div>
 </div>
-<div class="toast" id="toast" hidden role="status"></div>
+<div class="toast" id="toast" hidden role="status"></div><section class="callpanel" id="callPanel" hidden aria-live="polite"><strong id="callTitle">Voice call</strong><p id="callDescription">Connecting…</p><div class="callactions"><button class="primary" id="answerCallBtn" hidden>Answer</button><button class="callbtn danger" id="endCallBtn">End call</button></div><audio id="remoteAudio" autoplay></audio></section>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
@@ -67,7 +67,9 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 const $ = id => document.getElementById(id);
 let user = null, username = '', currentPeer = null, profileCache = {}, messagesByPeer = {};
-let unsubMessages = null, unsubSessions = null, unsubPeerMessages = null, messageDocs = new Map();
+let unsubMessages = null, unsubSessions = null, unsubPeerMessages = null, unsubCalls = null, messageDocs = new Map();
+let mediaRecorder = null, recordingChunks = [], recordingStarted = 0;
+let activeCall = null, localStream = null, peerConnection = null, callUnsubs = [], handledIncoming = new Set();
 let deviceId = '';
 try { deviceId = localStorage.getItem('textly_device') || ''; } catch (_) {}
 if (!deviceId) {
@@ -88,8 +90,8 @@ function setAvatar(el, photo, name) {
 }
 function fmt(ts) { try { return new Date(ts).toLocaleTimeString([], {hour:'numeric', minute:'2-digit'}); } catch (_) { return ''; } }
 function stopListeners() {
-  [unsubMessages, unsubSessions, unsubPeerMessages].forEach(fn => { if (typeof fn === 'function') fn(); });
-  unsubMessages = unsubSessions = unsubPeerMessages = null;
+  [unsubMessages, unsubSessions, unsubPeerMessages, unsubCalls].forEach(fn => { if (typeof fn === 'function') fn(); });
+  unsubMessages = unsubSessions = unsubPeerMessages = unsubCalls = null;
 }
 function clearAppState() {
   stopListeners(); currentPeer = null; profileCache = {}; messagesByPeer = {}; messageDocs.clear();
@@ -119,7 +121,7 @@ async function startApp() {
   $('myName').textContent = user.displayName || 'Textly user';
   $('myHandle').textContent = username ? '@' + username : '';
   setAvatar($('myAvatar'), user.photoURL, user.displayName);
-  $('messageInput').disabled = true; $('sendBtn').disabled = true;
+  $('messageInput').disabled = true; $('sendBtn').disabled = true; $('recordBtn').disabled = true; $('callBtn').disabled = true;
   setStatus('Connecting…');
   try {
     // Session marker is informational/single-active-device behavior, not an authentication boundary.
@@ -138,6 +140,13 @@ async function startApp() {
         messageDocs = next;
         rebuildConversations();
       }, e => { setStatus(handleError(e, 'Could not load messages')); });
+    unsubCalls = db.collection('calls').where('callee', '==', user.uid).where('status', '==', 'ringing')
+      .onSnapshot(snap => snap.docChanges().forEach(change => {
+        const d = change.doc.data();
+        if (change.type === 'added' && !handledIncoming.has(change.doc.id) && d.caller !== user.uid) {
+          handledIncoming.add(change.doc.id); showIncomingCall(change.doc.id, d);
+        }
+      }), e => console.warn('Incoming call listener:', e));
     setStatus('Online');
   } catch (e) {
     setStatus(handleError(e, 'Could not start Textly'));
@@ -190,7 +199,11 @@ function renderMessages() {
   const p=c.peer||{}; $('peerName').textContent=p.displayName||('@'+(p.username||'user')); $('peerHandle').textContent='@'+(p.username||'user'); setAvatar($('peerAvatar'),p.photoURL,p.username);
   c.messages.forEach(m => {
     const b=document.createElement('div'); b.className='bubble '+(m.from===user.uid?'mine':'theirs');
-    b.appendChild(document.createTextNode(safeText(m.text)));
+    if (m.type === 'audio' && m.audioURL) {
+      const label=document.createElement('div'); label.textContent='🎙 Voice message'; b.appendChild(label);
+      const audio=document.createElement('audio'); audio.controls=true; audio.preload='metadata'; audio.src=m.audioURL; audio.setAttribute('aria-label','Voice message'); b.appendChild(audio);
+      if (m.duration) { const dur=document.createElement('small'); dur.textContent=Math.round(m.duration)+' seconds'; b.appendChild(dur); }
+    } else b.appendChild(document.createTextNode(safeText(m.text)));
     const time=document.createElement('time'); time.textContent=fmt(m.ts); b.appendChild(time); area.appendChild(b);
   });
   area.scrollTop=area.scrollHeight;
@@ -207,7 +220,7 @@ async function openChat(uid) {
   }
   if (!messagesByPeer[uid]) messagesByPeer[uid]={peer:profileCache[uid],messages:[]};
   else messagesByPeer[uid].peer=profileCache[uid];
-  $('app').classList.add('showchat'); $('messageInput').disabled=false; $('sendBtn').disabled=false;
+  $('app').classList.add('showchat'); $('messageInput').disabled=false; $('sendBtn').disabled=false; $('recordBtn').disabled=false; $('callBtn').disabled=false;
   renderContacts(); renderMessages(); $('messageInput').focus();
 }
 async function addFriend() {
@@ -240,12 +253,135 @@ async function sendMessage() {
   try {
     await db.collection('messages').add({
       from:user.uid, fromName:username, to:currentPeer, toName:peer.username || '',
-      participants:[user.uid,currentPeer], text:text.slice(0,2000), ts:Date.now()
+      participants:[user.uid,currentPeer], type:'text', text:text.slice(0,2000), ts:Date.now()
     });
     input.value='';
   } catch(e) { toast(handleError(e,'Message was not sent')); }
   finally { send.disabled=false; input.focus(); }
 }
+async function recordVoiceMessage() {
+  if (!currentPeer || !user) return;
+  if (mediaRecorder && mediaRecorder.state === 'recording') { mediaRecorder.stop(); return; }
+  if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
+    toast('Voice recording is not supported by this browser. Use a current browser over HTTPS.'); return;
+  }
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({audio:true});
+    recordingChunks=[]; recordingStarted=Date.now();
+    let mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? 'audio/webm;codecs=opus' : '';
+    mediaRecorder = new MediaRecorder(stream, mimeType ? {mimeType} : undefined);
+    $('recordBtn').textContent='■ Stop'; $('recordBtn').classList.add('recording');
+    mediaRecorder.ondataavailable = e => { if (e.data && e.data.size) recordingChunks.push(e.data); };
+    mediaRecorder.onerror = () => { stream.getTracks().forEach(t=>t.stop()); resetRecorderButton(); toast('Recording failed. Please try again.'); };
+    mediaRecorder.onstop = async () => {
+      stream.getTracks().forEach(t=>t.stop()); resetRecorderButton();
+      const duration=(Date.now()-recordingStarted)/1000;
+      const blob=new Blob(recordingChunks,{type:mediaRecorder.mimeType||'audio/webm'});
+      recordingChunks=[];
+      if (!blob.size) { toast('No audio was recorded.'); return; }
+      if (blob.size > 650*1024) { toast('Voice message is too large for free Firestore storage. Please record a shorter clip (maximum about 650 KB).'); return; }
+      const peerId=currentPeer, peer=messagesByPeer[peerId]?.peer||profileCache[peerId];
+      if (!peer) return;
+      $('recordBtn').disabled=true; $('recordBtn').textContent='Saving…';
+      try {
+        // Spark-plan workaround: keep only small, short audio clips directly in Firestore.
+        // Firestore documents have a 1 MiB limit, so reject large clips before saving.
+        const audioData=await new Promise((resolve,reject)=>{
+          const reader=new FileReader();
+          reader.onload=()=>resolve(String(reader.result));
+          reader.onerror=()=>reject(new Error('Could not read the recorded audio.'));
+          reader.readAsDataURL(blob);
+        });
+        if (audioData.length > 900*1024) { toast('This recording is too large for Firestore. Please record a shorter clip.'); return; }
+        const messageRef=db.collection('messages').doc();
+        await messageRef.set({from:user.uid,fromName:username,to:peerId,toName:peer.username||'',participants:[user.uid,peerId],type:'audio',text:'',audioURL:audioData,duration:Math.min(600,Math.round(duration)),ts:Date.now()});
+        toast('Voice message sent.');
+      } catch(e) { toast(handleError(e,'Could not send voice message')); }
+      finally { $('recordBtn').disabled=false; $('recordBtn').textContent='🎙 Voice'; }
+    };
+    mediaRecorder.start(); toast('Recording… press Stop when finished.');
+  } catch(e) { toast(e.name==='NotAllowedError'?'Microphone permission was denied. Allow microphone access in your browser.':handleError(e,'Could not access microphone')); }
+}
+function resetRecorderButton(){ $('recordBtn').textContent='🎙 Voice'; $('recordBtn').classList.remove('recording'); }
+function showIncomingCall(callId, data) {
+  if (activeCall) { db.collection('calls').doc(callId).update({status:'rejected'}).catch(()=>{}); return; }
+  activeCall={id:callId,caller:false,incoming:true};
+  const callerName=data.callerName || profileCache[data.caller]?.username || 'A Textly user';
+  $('callTitle').textContent='Incoming voice call'; $('callDescription').textContent=callerName+' is calling you.';
+  $('answerCallBtn').hidden=false; $('callPanel').hidden=false;
+  $('answerCallBtn').onclick=()=>answerVoiceCall(callId,data);
+  $('endCallBtn').onclick=()=>endVoiceCall(true);
+}
+function addCallCandidateListener(callId, collectionName, pc) {
+  const unsub=db.collection('calls').doc(callId).collection(collectionName).onSnapshot(snap=>snap.docChanges().forEach(change=>{
+    if(change.type!=='added') return;
+    const c=change.doc.data(); if(!c.candidate) return;
+    pc.addIceCandidate(new RTCIceCandidate(c)).catch(e=>console.warn('ICE candidate error',e));
+  }),e=>console.warn('Candidate listener failed',e)); callUnsubs.push(unsub);
+}
+async function configurePeerConnection(callId, isCaller) {
+  peerConnection=new RTCPeerConnection({iceServers:[{urls:'stun:stun.l.google.com:19302'}]});
+  peerConnection.ontrack=e=>{ $('remoteAudio').srcObject=e.streams[0]; $('remoteAudio').play().catch(()=>{}); };
+  peerConnection.onconnectionstatechange=()=>{
+    if(!peerConnection) return;
+    const state=peerConnection.connectionState;
+    $('callDescription').textContent=state==='connected'?'Connected — voice call in progress':state==='connecting'?'Connecting audio…':state==='failed'?'Connection failed. Your network may require a TURN server.':state==='disconnected'?'Call connection interrupted':state==='closed'?'Call ended':state;
+  };
+  peerConnection.onicecandidate=async e=>{
+    if(!e.candidate) return;
+    const col=isCaller?'offerCandidates':'answerCandidates';
+    try { await db.collection('calls').doc(callId).collection(col).add(e.candidate.toJSON()); }
+    catch(err){console.warn('Could not save ICE candidate',err);}
+  };
+  localStream=await navigator.mediaDevices.getUserMedia({audio:true,video:false});
+  localStream.getTracks().forEach(track=>peerConnection.addTrack(track,localStream));
+  addCallCandidateListener(callId,isCaller?'answerCandidates':'offerCandidates',peerConnection);
+}
+async function startVoiceCall() {
+  if(!currentPeer || !user || activeCall) return;
+  if(!window.RTCPeerConnection || !navigator.mediaDevices?.getUserMedia){toast('Voice calls require a supported browser and HTTPS.');return;}
+  try {
+    const peer=messagesByPeer[currentPeer]?.peer||profileCache[currentPeer];
+    if(!peer) throw new Error('Friend profile is unavailable.');
+    const callRef=db.collection('calls').doc(); activeCall={id:callRef.id,caller:true};
+    $('callPanel').hidden=false; $('answerCallBtn').hidden=true; $('callTitle').textContent='Calling @'+(peer.username||'friend'); $('callDescription').textContent='Requesting microphone and connecting…';
+    await configurePeerConnection(callRef.id,true);
+    const offer=await peerConnection.createOffer();
+    await callRef.set({caller:user.uid,callerName:username,callee:currentPeer,calleeName:peer.username||'',status:'ringing',offer:{type:offer.type,sdp:offer.sdp},createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+    await peerConnection.setLocalDescription(offer);
+    const unsub=callRef.onSnapshot(async snap=>{
+      if(!snap.exists || !peerConnection) return;
+      const d=snap.data();
+      if(d.status==='ended' || d.status==='rejected'){toast(d.status==='rejected'?'Call declined.':'Call ended.');endVoiceCall(false);return;}
+      if(d.answer && !peerConnection.currentRemoteDescription) {
+        try { await peerConnection.setRemoteDescription(new RTCSessionDescription(d.answer)); $('callTitle').textContent='Voice call with @'+(peer.username||'friend'); }
+        catch(e){console.warn('Could not apply answer',e);}
+      }
+    },e=>toast(handleError(e,'Call signaling failed'))); callUnsubs.push(unsub);
+    $('callDescription').textContent='Ringing…';
+  } catch(e) { toast(handleError(e,'Could not start voice call')); await endVoiceCall(false); }
+}
+async function answerVoiceCall(callId,data) {
+  if(!window.RTCPeerConnection || !navigator.mediaDevices?.getUserMedia){toast('Voice calls require a supported browser and HTTPS.');return;}
+  try {
+    activeCall={id:callId,caller:false}; $('answerCallBtn').hidden=true; $('callTitle').textContent='Joining voice call'; $('callDescription').textContent='Requesting microphone…';
+    await configurePeerConnection(callId,false);
+    await peerConnection.setRemoteDescription(new RTCSessionDescription(data.offer));
+    const answer=await peerConnection.createAnswer(); await peerConnection.setLocalDescription(answer);
+    await db.collection('calls').doc(callId).update({answer:{type:answer.type,sdp:answer.sdp},status:'active'});
+    $('callTitle').textContent='Voice call with '+(data.callerName||'friend'); $('callDescription').textContent='Connecting audio…';
+    const unsub=db.collection('calls').doc(callId).onSnapshot(s=>{if(s.exists && ['ended','rejected'].includes(s.data().status)) endVoiceCall(false);},e=>console.warn(e));callUnsubs.push(unsub);
+  } catch(e) { toast(handleError(e,'Could not answer call')); await endVoiceCall(false); }
+}
+async function endVoiceCall(updateRemote=true) {
+  const call=activeCall; activeCall=null;
+  callUnsubs.forEach(fn=>{try{fn();}catch(_){}});callUnsubs=[];
+  if(peerConnection){try{peerConnection.ontrack=null;peerConnection.close();}catch(_){} peerConnection=null;}
+  if(localStream){localStream.getTracks().forEach(t=>t.stop());localStream=null;}
+  $('remoteAudio').srcObject=null; $('callPanel').hidden=true; $('answerCallBtn').hidden=true;
+  if(call && updateRemote){try{await db.collection('calls').doc(call.id).update({status:'ended',endedAt:firebase.firestore.FieldValue.serverTimestamp()});}catch(e){console.warn('Could not mark call ended',e);}}
+}
+
 async function createUsername() {
   const n=$('usernameInput').value.trim().toLowerCase().replace(/^@/,'');
   if (!/^[a-z0-9_]{3,20}$/.test(n)) { setError('loginError','Use 3–20 lowercase letters, numbers, or underscores.'); return; }
@@ -293,6 +429,9 @@ $('addFriend').addEventListener('click',addFriend);
 $('friendInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addFriend();}});
 $('search').addEventListener('input',renderContacts);
 $('composeForm').addEventListener('submit',e=>{e.preventDefault();sendMessage();});
+$('recordBtn').addEventListener('click',recordVoiceMessage);
+$('callBtn').addEventListener('click',startVoiceCall);
+$('endCallBtn').addEventListener('click',()=>endVoiceCall(true));
 $('backBtn').addEventListener('click',()=>$('app').classList.remove('showchat'));
 $('signOut').addEventListener('click',async()=>{stopListeners();try{await auth.signOut();}catch(e){toast(handleError(e,'Sign out failed'));}});
 $('themeBtn').addEventListener('click',()=>{
