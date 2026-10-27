@@ -57,6 +57,11 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
     <input id="phone" type="tel" inputmode="tel" placeholder="+966 5X XXX XXXX" autocomplete="tel">
     <div class="err" id="lerr"></div>
     <button class="btn" id="go">Start texting</button>
+    <div id="codeStep" hidden>
+      <input id="code" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="6-digit code">
+      <button class="btn" id="verify">Verify</button>
+      <p style="margin:12px 0 0;font-size:14px"><a href="#" id="change" style="color:var(--accent)">Use a different number</a></p>
+    </div>
   </div>
 </div>
 
@@ -74,14 +79,24 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
   </section>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script>
+// Paste your Firebase web app config here to turn on SMS code verification.
+// Leave apiKey empty and the site works without verification.
+var FIREBASE_CONFIG={apiKey:"AIzaSyAsMGcM1XsoBbEBLXX8_oAx8bi2X5-OggE",authDomain:"textly-47c96.firebaseapp.com",projectId:"textly-47c96",appId:"1:857836621599:web:5332539e4d71adebea2a2a"};
+var USE_SMS=!!(FIREBASE_CONFIG.apiKey&&window.firebase);
+var auth=null,conf=null,rv=null;
+if(USE_SMS){firebase.initializeApp(FIREBASE_CONFIG);auth=firebase.auth()}
+
 // Messages travel through ntfy.sh, a free public relay that needs no account or server of your own.
 var RELAY="https://ntfy.sh/";
 var $=function(i){return document.getElementById(i)};
-var me="",chats={},seen={},cur="",es=null;
+var me="",chats={},seen={},cur="",es=null,cs=null,dev="";
 
-function load(){try{var s=JSON.parse(localStorage.getItem("textly2")||"{}");me=s.me||"";chats=s.chats||{};seen=s.seen||{}}catch(e){}}
-function save(){try{localStorage.setItem("textly2",JSON.stringify({me:me,chats:chats,seen:seen}))}catch(e){}}
+function load(){try{var s=JSON.parse(localStorage.getItem("textly2")||"{}");me=s.me||"";chats=s.chats||{};seen=s.seen||{};dev=s.dev||""}catch(e){}
+  if(!dev)dev=Math.random().toString(36).slice(2)+Date.now().toString(36)}
+function save(){try{localStorage.setItem("textly2",JSON.stringify({me:me,chats:chats,seen:seen,dev:dev}))}catch(e){}}
 function norm(s){return String(s).replace(/\D/g,"")}
 function valid(n){return n.length>=8&&n.length<=15}
 function pretty(n){return "+"+n}
@@ -158,17 +173,74 @@ function render(){
 
 function open(n){cur=n;$("app").classList.add("chat");render();$("inp").focus()}
 
-function enter(){
+// One device per number: the newest sign-in claims the number and any older device is signed out.
+function claim(){
+  if(cs)cs.close();
+  var sent=false;
+  topic("claim-"+me).then(function(t){
+    cs=new EventSource(RELAY+t+"/sse");
+    cs.onmessage=function(e){
+      var d,p;try{d=JSON.parse(e.data);if(d.event!=="message")return;p=JSON.parse(d.message)}catch(x){return}
+      if(p.dev&&p.dev!==dev)kicked();
+    };
+    cs.onopen=function(){
+      if(sent)return;sent=true;
+      fetch(RELAY+t,{method:"POST",body:JSON.stringify({dev:dev,ts:Date.now()})}).catch(function(){});
+    };
+  });
+}
+function checkClaim(){
+  return topic("claim-"+me).then(function(t){return fetch(RELAY+t+"/json?poll=1&since=all")})
+    .then(function(r){return r.text()})
+    .then(function(txt){
+      var last=null;
+      txt.split("\n").forEach(function(line){try{var d=JSON.parse(line);if(d.event==="message")last=JSON.parse(d.message)}catch(x){}});
+      return !last||last.dev===dev;
+    }).catch(function(){return true});
+}
+function kicked(){
+  if(es)es.close();if(cs)cs.close();
+  me="";cur="";save();
+  if(auth)auth.signOut();resetLogin();
+  $("app").hidden=true;$("login").hidden=false;
+  $("lerr").textContent="This number is signed in on another device. Enter it again to use it here instead.";
+}
+function enter(resume){
   $("login").hidden=true;$("app").hidden=false;
   $("mine").textContent="You: "+pretty(me);
-  render();connect();
+  render();
+  if(resume){checkClaim().then(function(ok){if(ok){claim();connect()}else kicked()})}
+  else{claim();connect()}
 }
 
 $("go").onclick=function(){
   var n=norm($("phone").value);
   if(!valid(n)){$("lerr").textContent="Enter a full number with country code, like +966501234567.";return}
-  me=n;save();enter();
+  if(!USE_SMS){me=n;save();enter();return}
+  $("go").disabled=true;$("lerr").textContent="Sending code…";
+  if(!rv)rv=new firebase.auth.RecaptchaVerifier("go",{size:"invisible"});
+  auth.signInWithPhoneNumber("+"+n,rv).then(function(c){
+    conf=c;$("lerr").textContent="Code sent by SMS.";
+    $("codeStep").hidden=false;$("go").hidden=true;$("phone").disabled=true;$("code").focus();
+  }).catch(function(e){
+    $("go").disabled=false;$("lerr").textContent="Couldn't send the code ("+(e.code||"error")+").";
+    try{rv.clear()}catch(x){}rv=null;
+  });
 };
+function resetLogin(){
+  $("codeStep").hidden=true;$("go").hidden=false;$("go").disabled=false;
+  $("phone").disabled=false;$("code").value="";$("lerr").textContent="";conf=null;
+  try{if(rv)rv.clear()}catch(x){}rv=null;
+}
+$("verify").onclick=function(){
+  var c=$("code").value.trim();if(!c||!conf)return;
+  $("lerr").textContent="Checking…";
+  conf.confirm(c).then(function(r){me=norm(r.user.phoneNumber);save();resetLogin();enter()})
+    .catch(function(){$("lerr").textContent="That code is wrong. Try again."});
+};
+$("code").onkeydown=function(e){if(e.key==="Enter")$("verify").click()};
+$("change").onclick=function(e){e.preventDefault();resetLogin()};
+if(USE_SMS)$("go").textContent="Send code";
 $("phone").onkeydown=function(e){if(e.key==="Enter")$("go").click()};
 $("add").onclick=function(){
   var n=norm($("to").value);
@@ -183,12 +255,21 @@ $("send").onclick=send;
 $("inp").onkeydown=function(e){if(e.key==="Enter")send()};
 $("back").onclick=function(){$("app").classList.remove("chat")};
 $("out").onclick=function(){
-  if(es)es.close();me="";cur="";save();
+  if(es)es.close();if(cs)cs.close();me="";cur="";save();
+  if(auth)auth.signOut();resetLogin();
   $("app").hidden=true;$("login").hidden=false;$("phone").value="";
 };
 
 load();
-if(me)enter();
+if(me){
+  if(USE_SMS){
+    var un=auth.onAuthStateChanged(function(u){
+      un();
+      if(u&&u.phoneNumber&&norm(u.phoneNumber)===me)enter(true);
+      else{me="";save()}
+    });
+  }else enter(true);
+}
 </script>
 </body>
 </html>
