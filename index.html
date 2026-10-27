@@ -220,7 +220,7 @@ $("go").onclick=function(){
   if(!valid(n)){$("lerr").textContent="Enter a full number with country code, like +966501234567.";return}
   if(!USE_SMS){me=n;save();enter();return}
   $("go").disabled=true;say("Sending code…",true);
-  if(!rv)rv=new firebase.auth.RecaptchaVerifier("rc",{size:"invisible"});
+  rv=makeVerifier();
   auth.signInWithPhoneNumber("+"+n,rv).then(function(c){
     conf=c;say("Code sent by SMS.",true);
     $("codeStep").hidden=false;$("go").hidden=true;$("phone").disabled=true;$("code").focus();
@@ -229,6 +229,12 @@ $("go").onclick=function(){
     try{rv.clear()}catch(x){}rv=null;
   });
 };
+function makeVerifier(){
+  try{if(rv)rv.clear()}catch(x){}
+  var old=$("rc"),fresh=document.createElement("div");
+  fresh.id="rc";old.parentNode.replaceChild(fresh,old);
+  return new firebase.auth.RecaptchaVerifier("rc",{size:"invisible"});
+}
 function resetLogin(){
   $("codeStep").hidden=true;$("go").hidden=false;$("go").disabled=false;
   $("phone").disabled=false;$("code").value="";say("");conf=null;
