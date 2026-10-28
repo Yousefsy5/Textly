@@ -311,39 +311,14 @@ function showIncomingCall(callId, data) {
   $('answerCallBtn').hidden=false; $('callPanel').hidden=false;
   $('answerCallBtn').onclick=()=>answerVoiceCall(callId,data);
   $('endCallBtn').onclick=()=>endVoiceCall(true);
-
 function addCallCandidateListener(callId, collectionName, pc) {
-  if (!['offerCandidates', 'answerCandidates'].includes(collectionName)) {
-    console.error('Invalid candidate collection:', collectionName);
-    return;
-  }
-
-  const unsub = db.collection('calls')
-    .doc(callId)
-    .collection(collectionName)
-    .onSnapshot(
-      snap => {
-        snap.docChanges().forEach(change => {
-          if (change.type !== 'added') return;
-
-          const c = change.doc.data();
-          if (!c.candidate) return;
-
-          pc.addIceCandidate(new RTCIceCandidate(c))
-            .catch(e => console.warn('ICE candidate error:', e));
-        });
-      },
-      e => console.error(
-        'Candidate listener failed:',
-        'collection =', collectionName,
-        'callId =', callId,
-        'code =', e.code,
-        'message =', e.message
-      )
-    );
-
-  callUnsubs.push(unsub);
+  const unsub = db.collection('calls').doc(callId).collection(collectionName).onSnapshot(snap=>snap.docChanges().forEach(change=>{
+    if(change.type!=='added') return;
+    const c=change.doc.data(); if(!c.candidate) return;
+    pc.addIceCandidate(new RTCIceCandidate(c)).catch(e=>console.warn('ICE candidate error',e));
+  }),e=>console.warn('Candidate listener failed',e)); callUnsubs.push(unsub);
 }
+
 
 async function configurePeerConnection(callId, isCaller) {
   peerConnection=new RTCPeerConnection({iceServers:[{urls:'stun:stun.l.google.com:19302'}]});
