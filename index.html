@@ -10,7 +10,7 @@
 :root[data-theme="dark"]{color-scheme:dark;--bg:#0b1412;--panel:#13201c;--ink:#e6f1ed;--muted:#9bb0a9;--line:#293a34;--accent:#2bb9a5;--accent2:#38d4bd;--bubble:#21332d;--danger:#ff8178;--shadow:0 18px 55px #0003}
 *{box-sizing:border-box}html,body{height:100%;margin:0}body{font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}[hidden]{display:none!important}
 .shell{height:100dvh;max-width:1180px;margin:auto;padding:18px;display:flex}.app{display:flex;min-height:0;flex:1;background:var(--panel);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
-.sidebar{width:330px;flex:0 0 330px;display:flex;flex-direction:column;border-right:1px solid var(--line);min-width:0}.brandrow,.chathead{display:flex;align-items:center;gap:12px;padding:18px;border-bottom:1px solid var(--line)}.brand{font-size:23px;font-weight:850;letter-spacing:-.8px;color:var(--accent);margin:0}.brandmark{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:var(--accent);color:white;font-weight:900}.spacer{flex:1}.iconbtn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:12px;width:40px;height:40px;display:grid;place-items:center}.profile{display:flex;align-items:center;gap:10px;padding:14px 18px}.avatar{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;overflow:hidden;font-weight:750;flex:none}.avatar img{width:100%;height:100%;object-fit:cover}.profilecopy{min-width:0;flex:1}.profilecopy strong,.profilecopy span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.profilecopy span{color:var(--muted);font-size:12px}.linkbtn{border:0;background:transparent;color:var(--accent);font-weight:650;padding:6px}.searchrow,.newchat{padding:0 16px 12px}.field{width:100%;min-width:0;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:12px 14px}.newchat{display:flex;gap:8px}.newchat .field{flex:1}.primary{border:0;border-radius:14px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:750;transition:transform .15s,background .15s}.primary:hover{background:var(--accent2)}.primary:active{transform:scale(.98)}.error{color:var(--danger);font-size:13px;padding:0 16px 10px;min-height:4px}.contactlist{overflow:auto;flex:1;padding:4px 8px 12px}.contact{width:100%;display:flex;gap:11px;align-items:center;padding:11px 10px;border:0;background:transparent;color:inherit;border-radius:15px;text-align:left}.contact:hover,.contact.active{background:var(--bg)}.contact .avatar{width:46px;height:46px}.contactcopy{flex:1;min-width:0}.contactcopy strong,.contactcopy span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.contactcopy span{color:var(--muted);font-size:13px}.empty{padding:24px 18px;text-align:center;color:var(--muted)}.main{display:flex;flex:1;min-width:0;flex-direction:column}.chathead{min-height:79px}.back{display:none}.chatwho{min-width:0}.chatwho strong,.chatwho span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.chatwho span{color:var(--muted);font-size:12px}.messages{flex:1;min-height:0;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:9px;background:radial-gradient(ellipse at top right,color-mix(in srgb,var(--accent) 5%,transparent),transparent 50%)}.welcome{margin:auto;text-align:center;max-width:360px;color:var(--muted);padding:24px}.welcome .brandmark{margin:0 auto 12px;width:56px;height:56px;font-size:20px}.bubble{max-width:min(76%,560px);padding:10px 14px;border-radius:18px;overflow-wrap:anywhere;white-space:pre-wrap}.bubble.mine{align-self:flex-end;background:var(--accent);color:white;border-bottom-right-radius:5px}.bubble.theirs{align-self:flex-start;background:var(--bubble);border-bottom-left-radius:5px}.bubble time{display:block;font-size:10px;opacity:.72;margin-top:4px;text-align:right}.compose{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--line)}.toolbtn{border:1px solid var(--line);border-radius:13px;padding:10px 12px;background:var(--bg);color:var(--ink);font-weight:700;white-space:nowrap}.toolbtn:disabled{opacity:.45;cursor:not-allowed}.dangerbtn{background:var(--danger);color:white;border-color:transparent}.calltools{display:flex;gap:7px;margin-left:auto}.incoming{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;background:var(--bubble);border-bottom:1px solid var(--line)}.incoming span{flex:1;min-width:150px}.bubble audio{display:block;max-width:min(100%,320px);width:300px;margin:3px 0}.bubble .voice-label{font-weight:700;margin-bottom:6px}.compose .field{flex:1;border-radius:18px}.compose .primary{min-width:84px}.status{font-size:12px;color:var(--muted);margin-left:auto}.loginwrap{min-height:100dvh;display:grid;place-items:center;padding:20px}.login{width:min(100%,420px);background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:32px;box-shadow:var(--shadow)}.login .brandmark{margin-bottom:18px}.login h1{font-size:32px;letter-spacing:-1px;margin:0 0 6px}.sub{color:var(--muted);margin:0 0 22px}.login .primary{width:100%;margin-top:8px;padding:13px}.googlemark{display:inline-grid;place-items:center;background:#fff;color:#4285f4;border-radius:50%;width:23px;height:23px;font-weight:900;margin-right:8px}.login input{width:100%;margin-bottom:12px}.notice{font-size:12px;color:var(--muted);margin-top:16px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--panel);padding:11px 16px;border-radius:12px;box-shadow:var(--shadow);z-index:5;max-width:calc(100% - 30px)}
+.sidebar{width:330px;flex:0 0 330px;display:flex;flex-direction:column;border-right:1px solid var(--line);min-width:0}.brandrow,.chathead{display:flex;align-items:center;gap:12px;padding:18px;border-bottom:1px solid var(--line)}.brand{font-size:23px;font-weight:850;letter-spacing:-.8px;color:var(--accent);margin:0}.brandmark{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:var(--accent);color:white;font-weight:900}.spacer{flex:1}.iconbtn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:12px;width:40px;height:40px;display:grid;place-items:center}.profile{display:flex;align-items:center;gap:10px;padding:14px 18px}.avatar{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;overflow:hidden;font-weight:750;flex:none}.avatar img{width:100%;height:100%;object-fit:cover}.profilecopy{min-width:0;flex:1}.profilecopy strong,.profilecopy span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.profilecopy span{color:var(--muted);font-size:12px}.linkbtn{border:0;background:transparent;color:var(--accent);font-weight:650;padding:6px}.searchrow,.newchat{padding:0 16px 12px}.field{width:100%;min-width:0;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:12px 14px}.newchat{display:flex;gap:8px}.newchat .field{flex:1}.primary{border:0;border-radius:14px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:750;transition:transform .15s,background .15s}.primary:hover{background:var(--accent2)}.primary:active{transform:scale(.98)}.error{color:var(--danger);font-size:13px;padding:0 16px 10px;min-height:4px}.contactlist{overflow:auto;flex:1;padding:4px 8px 12px}.contact{width:100%;display:flex;gap:11px;align-items:center;padding:11px 10px;border:0;background:transparent;color:inherit;border-radius:15px;text-align:left}.contact:hover,.contact.active{background:var(--bg)}.contact .avatar{width:46px;height:46px}.contactcopy{flex:1;min-width:0}.contactcopy strong,.contactcopy span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.contactcopy span{color:var(--muted);font-size:13px}.empty{padding:24px 18px;text-align:center;color:var(--muted)}.main{display:flex;flex:1;min-width:0;flex-direction:column}.chathead{min-height:79px}.back{display:none}.chatwho{min-width:0}.chatwho strong,.chatwho span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.chatwho span{color:var(--muted);font-size:12px}.messages{flex:1;min-height:0;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:9px;background:radial-gradient(ellipse at top right,color-mix(in srgb,var(--accent) 5%,transparent),transparent 50%)}.welcome{margin:auto;text-align:center;max-width:360px;color:var(--muted);padding:24px}.welcome .brandmark{margin:0 auto 12px;width:56px;height:56px;font-size:20px}.bubble{max-width:min(76%,560px);padding:10px 14px;border-radius:18px;overflow-wrap:anywhere;white-space:pre-wrap}.bubble.mine{align-self:flex-end;background:var(--accent);color:white;border-bottom-right-radius:5px}.bubble.theirs{align-self:flex-start;background:var(--bubble);border-bottom-left-radius:5px}.bubble time{display:block;font-size:10px;opacity:.72;margin-top:4px;text-align:right}.compose{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--line)}.toolbtn{border:1px solid var(--line);border-radius:13px;padding:10px 12px;background:var(--bg);color:var(--ink);font-weight:700;white-space:nowrap}.toolbtn:disabled{opacity:.45;cursor:not-allowed}.dangerbtn{background:var(--danger);color:white;border-color:transparent}.calltools{display:flex;gap:7px;margin-left:auto}.incoming{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;background:var(--bubble);border-bottom:1px solid var(--line)}.incoming span{flex:1;min-width:150px}.bubble audio{display:block;max-width:min(100%,320px);width:300px;margin:3px 0}.bubble .voice-label{font-weight:700;margin-bottom:6px}.compose .field{flex:1;border-radius:18px}.compose .primary{min-width:84px}.status{font-size:12px;color:var(--muted);margin-left:auto}.loginwrap{min-height:100dvh;display:grid;place-items:center;padding:20px}.login{width:min(100%,420px);background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:32px;box-shadow:var(--shadow)}.login .brandmark{margin-bottom:18px}.login h1{font-size:32px;letter-spacing:-1px;margin:0 0 6px}.sub{color:var(--muted);margin:0 0 22px}.login .primary{width:100%;margin-top:8px;padding:13px}.googlemark{display:inline-grid;place-items:center;background:#fff;color:#4285f4;border-radius:50%;width:23px;height:23px;font-weight:900;margin-right:8px}.login input{width:100%;margin-bottom:12px}.notice{font-size:12px;color:var(--muted);margin-top:16px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--panel);padding:11px 16px;border-radius:12px;box-shadow:var(--shadow);z-index:5;max-width:calc(100% - 30px)}#remoteAudio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 @media(max-width:720px){.shell{padding:0}.app{border:0;border-radius:0}.sidebar{width:100%;flex-basis:100%;border:0}.main{display:none}.app.showchat .sidebar{display:none}.app.showchat .main{display:flex}.back{display:grid}.brandrow{padding:14px 16px}.chathead{padding:12px}.messages{padding:16px}.bubble{max-width:86%}}
 @media(min-width:721px){.back{display:none}}
 </style>
@@ -44,7 +44,7 @@
     <main class="main">
       <header class="chathead"><button class="iconbtn back" id="backBtn" aria-label="Back to conversations">‹</button><div class="avatar" id="peerAvatar">T</div><div class="chatwho"><strong id="peerName">Welcome to Textly</strong><span id="peerHandle">Choose a conversation to begin</span></div><div class="calltools"><button class="toolbtn" id="callBtn" disabled title="Start voice call">Call</button><button class="toolbtn dangerbtn" id="hangupBtn" hidden>Hang up</button></div><div class="status" id="connectionStatus">Connecting…</div></header>
       <div class="incoming" id="incomingCall" hidden><span id="incomingText">Incoming voice call</span><button class="primary" id="answerCallBtn">Answer</button><button class="toolbtn" id="rejectCallBtn">Reject</button></div>
-      <audio id="remoteAudio" autoplay playsinline hidden></audio>
+      <audio id="remoteAudio" autoplay playsinline></audio>
       <section class="messages" id="messages" aria-live="polite"><div class="welcome"><div class="brandmark">T</div><strong>Your conversations belong here.</strong><p>Choose a friend or start a chat with their username.</p></div></section>
       <form class="compose" id="composeForm"><input class="field" id="messageInput" placeholder="Write a message…" maxlength="2000" autocomplete="off" disabled aria-label="Message"><button class="toolbtn" type="button" id="recordVoiceBtn" disabled title="Record a voice message">🎙 Voice</button><button class="primary" id="sendBtn" disabled>Send</button></form>
     </main>
@@ -56,8 +56,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 'use strict';
-// This config identifies your Firebase project; it is not an admin secret.
-// Keep Firebase Security Rules enabled and never put service-account keys here.
+
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyAsMGcM1XsoBbEBLXX8_oAx8bi2X5-OggE",
   authDomain: "textly-47c96.firebaseapp.com",
@@ -68,17 +67,33 @@ firebase.initializeApp(FIREBASE_CONFIG);
 const auth = firebase.auth();
 const db = firebase.firestore();
 const $ = id => document.getElementById(id);
+
+// ---------- Constants (single source of truth, mirrored in rules) ----------
+const MAX_TEXT_LEN       = 2000;
+// Voice note caps. Base64 inflates ~33%, and Firestore's hard doc cap is 1 MiB.
+// 350 KB blob -> ~470 KB base64 -> comfortably under 1 MiB with room for other fields.
+const MAX_VOICE_BLOB_BYTES   = 350 * 1024;
+const MAX_VOICE_DATAURL_CHARS = 480 * 1024;
+const MAX_VOICE_DURATION_SEC = 600;
+const STUN_SERVERS = [{ urls: 'stun:stun.l.google.com:19302' }];
+
+// ---------- App state ----------
 let user = null, username = '', currentPeer = null, profileCache = {}, messagesByPeer = {};
-let unsubMessages = null, unsubSessions = null, unsubPeerMessages = null, unsubIncomingCalls = null, messageDocs = new Map();
+let unsubMessages = null, unsubSessions = null, unsubIncomingCalls = null;
+let messageDocs = new Map();
 let activeCallId = null, activeCallRole = null, activeCallRef = null, peerConnection = null, localStream = null, callUnsubs = [];
 let incomingCallInfo = null, mediaRecorder = null, recordingChunks = [], recordingStartedAt = 0, recordingStream = null;
+let callWatchdogTimer = null;
+
 let deviceId = '';
 try { deviceId = localStorage.getItem('textly_device') || ''; } catch (_) {}
 if (!deviceId) {
   deviceId = (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2) + Date.now().toString(36));
   try { localStorage.setItem('textly_device', deviceId); } catch (_) {}
 }
-function setError(id, msg) { $(id).textContent = msg || ''; }
+
+// ---------- Small helpers ----------
+function setError(id, msg) { const el = $(id); if (el) el.textContent = msg || ''; }
 function toast(msg) { const t = $('toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast.timer); toast.timer = setTimeout(() => t.hidden = true, 3200); }
 function setStatus(s) { $('connectionStatus').textContent = s; }
 function showLogin(msg='') { $('loginView').hidden = false; $('appView').hidden = true; setError('loginError', msg); }
@@ -87,235 +102,327 @@ function safeText(v) { return typeof v === 'string' ? v : ''; }
 function initials(name) { return (safeText(name).trim()[0] || 'T').toUpperCase(); }
 function setAvatar(el, photo, name) {
   el.replaceChildren();
-  if (photo) { const img = document.createElement('img'); img.alt = ''; img.referrerPolicy = 'no-referrer'; img.src = photo; img.onerror = () => { el.textContent = initials(name); }; el.appendChild(img); }
-  else el.textContent = initials(name);
+  if (photo) {
+    const img = document.createElement('img');
+    img.alt = ''; img.referrerPolicy = 'no-referrer'; img.src = photo;
+    img.onerror = () => { el.textContent = initials(name); };
+    el.appendChild(img);
+  } else el.textContent = initials(name);
 }
 function fmt(ts) { try { return new Date(ts).toLocaleTimeString([], {hour:'numeric', minute:'2-digit'}); } catch (_) { return ''; } }
-function stopListeners() {
-  [unsubMessages, unsubSessions, unsubPeerMessages, unsubIncomingCalls].forEach(fn => { if (typeof fn === 'function') fn(); });
-  unsubMessages = unsubSessions = unsubPeerMessages = unsubIncomingCalls = null;
-  callUnsubs.forEach(fn => { try { fn(); } catch (_) {} }); callUnsubs = [];
-  cleanupCall(false);
-}
-function clearAppState() {
-  stopListeners(); currentPeer = null; profileCache = {}; messagesByPeer = {}; messageDocs.clear();
-  $('contactList').replaceChildren(); $('messages').replaceChildren();
-  if ($('incomingCall')) $('incomingCall').hidden = true; if ($('hangupBtn')) $('hangupBtn').hidden = true; if ($('callBtn')) $('callBtn').disabled = true; if ($('recordVoiceBtn')) $('recordVoiceBtn').disabled = true;
-}
+
 function handleError(e, context='Request failed') {
   console.error(context, e);
-  const code = e && e.code ? e.code : 'unknown';
+  const code = (e && e.code) ? e.code : 'unknown';
   const details = {
     'permission-denied':'Firebase denied this action. Check the deployed Firestore rules.',
     'unavailable':'Firebase is temporarily unavailable. Check your connection and retry.',
     'auth/popup-blocked':'The sign-in popup was blocked. Allow popups or try again.',
     'auth/popup-closed-by-user':'The sign-in window was closed before finishing.',
     'auth/unauthorized-domain':'Add this website hostname under Firebase Authentication → Settings → Authorized domains.',
-    'auth/network-request-failed':'Network request failed. Check your internet connection.'
+    'auth/network-request-failed':'Network request failed. Check your internet connection.',
+    'auth/cancelled-popup-request':'Sign-in was cancelled. Try again.'
   };
-  return details[code] || details[e && e.code] || `${context} (${code}).`;
+  return details[code] || `${context} (${code}).`;
 }
+
+// ---------- Listeners / cleanup ----------
+function stopListeners() {
+  [unsubMessages, unsubSessions, unsubIncomingCalls].forEach(fn => { if (typeof fn === 'function') { try { fn(); } catch (_) {} } });
+  unsubMessages = unsubSessions = unsubIncomingCalls = null;
+  callUnsubs.forEach(fn => { try { fn(); } catch (_) {} }); callUnsubs = [];
+}
+
+function clearAppState() {
+  stopListeners();
+  currentPeer = null; profileCache = {}; messagesByPeer = {}; messageDocs.clear();
+  incomingCallInfo = null;
+  $('contactList').replaceChildren();
+  $('messages').replaceChildren();
+  if ($('incomingCall')) $('incomingCall').hidden = true;
+  if ($('hangupBtn')) $('hangupBtn').hidden = true;
+  if ($('callBtn')) $('callBtn').disabled = true;
+  if ($('recordVoiceBtn')) $('recordVoiceBtn').disabled = true;
+}
+
+// ---------- Profile boot ----------
 async function loadOwnProfile(u) {
   const snap = await db.collection('users').doc(u.uid).get();
-  if (snap.exists) { username = snap.data().username; return true; }
+  if (snap.exists) { username = snap.data().username || ''; return !!username; }
   username = '';
   return false;
 }
+
 async function startApp() {
-  clearAppState(); showApp();
+  clearAppState();
+  showApp();
   $('myName').textContent = user.displayName || 'Textly user';
   $('myHandle').textContent = username ? '@' + username : '';
   setAvatar($('myAvatar'), user.photoURL, user.displayName);
-  $('messageInput').disabled = true; $('sendBtn').disabled = true; $('recordVoiceBtn').disabled = true; $('callBtn').disabled = !currentPeer;
+  $('messageInput').disabled = true; $('sendBtn').disabled = true;
+  $('recordVoiceBtn').disabled = true; $('callBtn').disabled = true;
   setStatus('Connecting…');
+
   try {
-    // Session marker is informational/single-active-device behavior, not an authentication boundary.
     const sessionRef = db.collection('sessions').doc(user.uid);
     await sessionRef.set({ deviceId, updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
     unsubSessions = sessionRef.onSnapshot(s => {
       if (s.exists && s.data().deviceId !== deviceId) {
-        stopListeners(); auth.signOut().catch(console.error);
+        stopListeners();
+        cleanupCall().finally(() => auth.signOut().catch(console.error));
         showLogin('This account was signed in on another device. Please sign in again.');
       }
-    }, e => { setStatus(handleError(e, 'Session check failed')); });
-    unsubMessages = db.collection('messages').where('participants', 'array-contains', user.uid)
+    }, e => setStatus(handleError(e, 'Session check failed')));
+
+    unsubMessages = db.collection('messages')
+      .where('participants', 'array-contains', user.uid)
       .onSnapshot(snap => {
         const next = new Map();
-        snap.forEach(doc => next.set(doc.id, {...doc.data(), id:doc.id}));
+        snap.forEach(doc => next.set(doc.id, { ...doc.data(), id: doc.id }));
         messageDocs = next;
         rebuildConversations();
-      }, e => { setStatus(handleError(e, 'Could not load messages')); });
-    unsubIncomingCalls = db.collection('calls').where('callee', '==', user.uid)
+      }, e => setStatus(handleError(e, 'Could not load messages')));
+
+    // Only ringing calls addressed to us; composite index (callee, status) required.
+    unsubIncomingCalls = db.collection('calls')
+      .where('callee', '==', user.uid)
+      .where('status', '==', 'ringing')
       .onSnapshot(snap => {
-        const doc = snap.docs.find(d => d.id !== activeCallId && d.data().status === 'ringing');
-        if (doc && !activeCallId) { incomingCallInfo = { id: doc.id, ...doc.data() };
+        const doc = snap.docs.find(d => d.id !== activeCallId);
+        if (doc && !activeCallId) {
+          incomingCallInfo = { id: doc.id, ...doc.data() };
           $('incomingText').textContent = `Incoming voice call from ${incomingCallInfo.callerName || 'Textly user'}`;
           $('incomingCall').hidden = false;
-        } else if (!doc && !activeCallId) { incomingCallInfo = null; $('incomingCall').hidden = true; }
+        } else if (!doc && !activeCallId) {
+          incomingCallInfo = null;
+          $('incomingCall').hidden = true;
+        }
       }, e => console.warn('Incoming-call listener failed:', e.code, e.message));
+
     setStatus('Online');
   } catch (e) {
     setStatus(handleError(e, 'Could not start Textly'));
     toast(handleError(e, 'Could not start Textly'));
   }
 }
+
+// ---------- Conversation rendering ----------
 function rebuildConversations() {
   const map = {};
-  // Keep explicitly opened empty chats even before the first message is sent.
-  Object.keys(profileCache).forEach(uid => { if (uid !== user.uid) map[uid] = {peer:profileCache[uid], messages:[]}; });
+  Object.keys(profileCache).forEach(uid => {
+    if (uid !== user.uid) map[uid] = { peer: profileCache[uid], messages: [] };
+  });
   messageDocs.forEach(m => {
     const peerId = m.from === user.uid ? m.to : m.from;
     if (!peerId || peerId === user.uid) return;
-    if (!map[peerId]) map[peerId] = {peer:profileCache[peerId] || {uid:peerId, username:m.from===user.uid?m.toName:m.fromName}, messages:[]};
+    if (!map[peerId]) map[peerId] = { peer: profileCache[peerId] || { uid: peerId, username: m.from === user.uid ? m.toName : m.fromName }, messages: [] };
     map[peerId].messages.push(m);
   });
-  Object.values(map).forEach(c => c.messages.sort((a,b) => (a.ts||0)-(b.ts||0)));
-  messagesByPeer = map; renderContacts(); renderMessages();
+  Object.values(map).forEach(c => c.messages.sort((a, b) => (a.ts || 0) - (b.ts || 0)));
+  messagesByPeer = map;
+  renderContacts();
+  renderMessages();
 }
+
 function renderContacts() {
   const list = $('contactList'); list.replaceChildren();
   const q = $('search').value.trim().toLowerCase();
   const ids = Object.keys(messagesByPeer).filter(id => {
     const p = messagesByPeer[id].peer || {};
-    return !q || safeText(p.username).toLowerCase().includes(q) || safeText(messagesByPeer[id].messages.at(-1)?.text).toLowerCase().includes(q);
-  }).sort((a,b) => {
-    const aa = messagesByPeer[a].messages.at(-1)?.ts || 0, bb = messagesByPeer[b].messages.at(-1)?.ts || 0;
-    return bb-aa;
+    const last = messagesByPeer[id].messages.at(-1);
+    return !q || safeText(p.username).toLowerCase().includes(q) || safeText(last && last.text).toLowerCase().includes(q);
+  }).sort((a, b) => {
+    const aa = (messagesByPeer[a].messages.at(-1) || {}).ts || 0;
+    const bb = (messagesByPeer[b].messages.at(-1) || {}).ts || 0;
+    return bb - aa;
   });
-  if (!ids.length) { const d=document.createElement('div'); d.className='empty'; d.textContent=q?'No matching conversations.':'No conversations yet. Search a friend’s username above to start one.'; list.appendChild(d); return; }
+  if (!ids.length) {
+    const d = document.createElement('div'); d.className = 'empty';
+    d.textContent = q ? 'No matching conversations.' : 'No conversations yet. Search a friend’s username above to start one.';
+    list.appendChild(d); return;
+  }
   ids.forEach(id => {
-    const c=messagesByPeer[id], p=c.peer||{}, last=c.messages.at(-1);
-    const b=document.createElement('button'); b.className='contact'+(id===currentPeer?' active':''); b.type='button';
-    const av=document.createElement('div'); av.className='avatar'; setAvatar(av,p.photoURL,p.username);
-    const copy=document.createElement('div'); copy.className='contactcopy';
-    const strong=document.createElement('strong'); strong.textContent='@'+(p.username||'user');
-    const span=document.createElement('span'); span.textContent=last?(last.from===user.uid?'You: ':'')+(last.type==='audio'?'🎤 Voice message':safeText(last.text)):'Start a conversation';
-    copy.append(strong,span); b.append(av,copy); b.onclick=()=>openChat(id); list.appendChild(b);
+    const c = messagesByPeer[id], p = c.peer || {}, last = c.messages.at(-1);
+    const b = document.createElement('button');
+    b.className = 'contact' + (id === currentPeer ? ' active' : '');
+    b.type = 'button';
+    const av = document.createElement('div'); av.className = 'avatar'; setAvatar(av, p.photoURL, p.username);
+    const copy = document.createElement('div'); copy.className = 'contactcopy';
+    const strong = document.createElement('strong'); strong.textContent = '@' + (p.username || 'user');
+    const span = document.createElement('span');
+    if (last) span.textContent = (last.from === user.uid ? 'You: ' : '') + (last.type === 'audio' ? '🎤 Voice message' : safeText(last.text));
+    else span.textContent = 'Start a conversation';
+    copy.append(strong, span); b.append(av, copy);
+    b.onclick = () => openChat(id); list.appendChild(b);
   });
 }
+
 function renderMessages() {
-  const area=$('messages'); area.replaceChildren();
-  const c=currentPeer && messagesByPeer[currentPeer];
+  const area = $('messages'); area.replaceChildren();
+  const c = currentPeer && messagesByPeer[currentPeer];
   if (!c) {
-    const w=document.createElement('div'); w.className='welcome'; const mark=document.createElement('div'); mark.className='brandmark'; mark.textContent='T';
-    const strong=document.createElement('strong'); strong.textContent='Your conversations belong here.';
-    const p=document.createElement('p'); p.textContent='Choose a friend or start a chat with their username.';
-    w.append(mark,strong,p); area.appendChild(w); $('peerName').textContent='Welcome to Textly'; $('peerHandle').textContent='Choose a conversation to begin'; setAvatar($('peerAvatar'),'','Textly'); return;
+    const w = document.createElement('div'); w.className = 'welcome';
+    const mark = document.createElement('div'); mark.className = 'brandmark'; mark.textContent = 'T';
+    const strong = document.createElement('strong'); strong.textContent = 'Your conversations belong here.';
+    const p = document.createElement('p'); p.textContent = 'Choose a friend or start a chat with their username.';
+    w.append(mark, strong, p); area.appendChild(w);
+    $('peerName').textContent = 'Welcome to Textly';
+    $('peerHandle').textContent = 'Choose a conversation to begin';
+    setAvatar($('peerAvatar'), '', 'Textly'); return;
   }
-  const p=c.peer||{}; $('peerName').textContent=p.displayName||('@'+(p.username||'user')); $('peerHandle').textContent='@'+(p.username||'user'); setAvatar($('peerAvatar'),p.photoURL,p.username);
+  const p = c.peer || {};
+  $('peerName').textContent = p.displayName || ('@' + (p.username || 'user'));
+  $('peerHandle').textContent = '@' + (p.username || 'user');
+  setAvatar($('peerAvatar'), p.photoURL, p.username);
   c.messages.forEach(m => {
-    const b=document.createElement('div'); b.className='bubble '+(m.from===user.uid?'mine':'theirs');
+    const b = document.createElement('div');
+    b.className = 'bubble ' + (m.from === user.uid ? 'mine' : 'theirs');
     if (m.type === 'audio' && typeof m.audioURL === 'string') {
-      const label=document.createElement('div'); label.className='voice-label'; label.textContent='🎤 Voice message'; b.appendChild(label);
-      const audio=document.createElement('audio'); audio.controls=true; audio.preload='metadata'; audio.src=m.audioURL; b.appendChild(audio);
+      const label = document.createElement('div'); label.className = 'voice-label'; label.textContent = '🎤 Voice message'; b.appendChild(label);
+      const audio = document.createElement('audio'); audio.controls = true; audio.preload = 'metadata'; audio.src = m.audioURL; b.appendChild(audio);
     } else {
       b.appendChild(document.createTextNode(safeText(m.text)));
     }
-    const time=document.createElement('time'); time.textContent=fmt(m.ts); b.appendChild(time); area.appendChild(b);
+    const time = document.createElement('time'); time.textContent = fmt(m.ts); b.appendChild(time);
+    area.appendChild(b);
   });
-  area.scrollTop=area.scrollHeight;
+  area.scrollTop = area.scrollHeight;
 }
+
 async function openChat(uid) {
-  if (!uid || uid===user.uid) return;
-  currentPeer=uid;
+  if (!uid || uid === user.uid) return;
+  currentPeer = uid;
   if (!profileCache[uid]) {
     try {
-      const snap=await db.collection('users').doc(uid).get();
-      if (!snap.exists) { toast('This user account could not be found.'); currentPeer=null; return; }
-      profileCache[uid]={uid, ...snap.data()};
-    } catch(e) { toast(handleError(e,'Could not load friend profile')); return; }
+      const snap = await db.collection('users').doc(uid).get();
+      if (!snap.exists) { toast('This user account could not be found.'); currentPeer = null; return; }
+      profileCache[uid] = { uid, ...snap.data() };
+    } catch (e) { toast(handleError(e, 'Could not load friend profile')); return; }
   }
-  if (!messagesByPeer[uid]) messagesByPeer[uid]={peer:profileCache[uid],messages:[]};
-  else messagesByPeer[uid].peer=profileCache[uid];
-  $('app').classList.add('showchat'); $('messageInput').disabled=false; $('sendBtn').disabled=false; $('recordVoiceBtn').disabled=false; $('callBtn').disabled=!!activeCallId;
+  if (!messagesByPeer[uid]) messagesByPeer[uid] = { peer: profileCache[uid], messages: [] };
+  else messagesByPeer[uid].peer = profileCache[uid];
+  $('app').classList.add('showchat');
+  $('messageInput').disabled = false; $('sendBtn').disabled = false;
+  $('recordVoiceBtn').disabled = false; $('callBtn').disabled = !!activeCallId;
   renderContacts(); renderMessages(); $('messageInput').focus();
 }
+
 async function addFriend() {
-  const n=$('friendInput').value.trim().toLowerCase().replace(/^@/,'');
-  setError('friendError','');
-  if (!/^[a-z0-9_]{3,20}$/.test(n)) { setError('friendError','Usernames must be 3–20 letters, numbers, or underscores.'); return; }
-  if (n===username) { setError('friendError','That is your own username.'); return; }
-  $('addFriend').disabled=true;
+  const n = $('friendInput').value.trim().toLowerCase().replace(/^@/, '');
+  setError('friendError', '');
+  if (!/^[a-z0-9_]{3,20}$/.test(n)) { setError('friendError', 'Usernames must be 3–20 letters, numbers, or underscores.'); return; }
+  if (n === username) { setError('friendError', 'That is your own username.'); return; }
+  $('addFriend').disabled = true;
   try {
-    const snap=await db.collection('usernames').doc(n).get();
-    if (!snap.exists) { setError('friendError','No user called @'+n+'.'); return; }
-    const uid=snap.data().uid;
-    if (uid===user.uid) { setError('friendError','That is your own username.'); return; }
-    const profile=await db.collection('users').doc(uid).get();
-    if (!profile.exists || profile.data().username!==n) { setError('friendError','That username is not available.'); return; }
-    profileCache[uid]={uid,...profile.data()};
-    $('friendInput').value='';
-    if (!messagesByPeer[uid]) messagesByPeer[uid]={peer:profileCache[uid],messages:[]};
+    const snap = await db.collection('usernames').doc(n).get();
+    if (!snap.exists) { setError('friendError', 'No user called @' + n + '.'); return; }
+    const uid = snap.data().uid;
+    if (uid === user.uid) { setError('friendError', 'That is your own username.'); return; }
+    const profile = await db.collection('users').doc(uid).get();
+    if (!profile.exists || profile.data().username !== n) { setError('friendError', 'That username is not available.'); return; }
+    profileCache[uid] = { uid, ...profile.data() };
+    $('friendInput').value = '';
+    if (!messagesByPeer[uid]) messagesByPeer[uid] = { peer: profileCache[uid], messages: [] };
     rebuildConversations();
     await openChat(uid);
-  } catch(e) { setError('friendError',handleError(e,'Could not find that user')); }
-  finally { $('addFriend').disabled=false; }
+  } catch (e) { setError('friendError', handleError(e, 'Could not find that user')); }
+  finally { $('addFriend').disabled = false; }
 }
+
 async function sendMessage() {
-  const input=$('messageInput'), text=input.value.trim();
+  const input = $('messageInput'), text = input.value.trim();
   if (!text || !currentPeer || !user) return;
-  const peer=messagesByPeer[currentPeer]?.peer || profileCache[currentPeer];
+  const peer = (messagesByPeer[currentPeer] && messagesByPeer[currentPeer].peer) || profileCache[currentPeer];
   if (!peer) { toast('Choose a valid conversation first.'); return; }
-  const send=$('sendBtn'); send.disabled=true;
+  const send = $('sendBtn'); send.disabled = true;
   try {
     await db.collection('messages').add({
-      from:user.uid, fromName:username, to:currentPeer, toName:peer.username || '',
-      participants:[user.uid,currentPeer], type:'text', text:text.slice(0,2000), ts:Date.now()
+      from: user.uid, fromName: username,
+      to: currentPeer, toName: peer.username || '',
+      participants: [user.uid, currentPeer],
+      type: 'text', text: text.slice(0, MAX_TEXT_LEN), ts: Date.now()
     });
-    input.value='';
-  } catch(e) { toast(handleError(e,'Message was not sent')); }
-  finally { send.disabled=false; input.focus(); }
+    input.value = '';
+  } catch (e) { toast(handleError(e, 'Message was not sent')); }
+  finally { send.disabled = false; input.focus(); }
 }
-// ---- Voice messages ----
-async function toggleVoiceRecording() {
-  if (mediaRecorder && mediaRecorder.state === 'recording') { mediaRecorder.stop(); $('recordVoiceBtn').disabled = true; $('recordVoiceBtn').textContent = 'Saving…'; return; }
-  if (!user || !currentPeer) { toast('Open a conversation first.'); return; }
-  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.MediaRecorder) {
-    toast('Voice recording is not supported in this browser. Use a secure HTTPS page and a recent browser.'); return;
-  }
-  try {
-    recordingStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    recordingChunks = []; recordingStartedAt = Date.now();
-    let options = {};
-    if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) options.mimeType = 'audio/webm;codecs=opus';
-    mediaRecorder = new MediaRecorder(recordingStream, options);
-    mediaRecorder.ondataavailable = e => { if (e.data && e.data.size) recordingChunks.push(e.data); };
-    mediaRecorder.onerror = e => { console.error('Voice recorder error:', e.error || e); toast('Could not record audio.'); finishRecordingUI(); };
-    mediaRecorder.onstop = async () => {
-      const duration = Math.max(1, Math.min(600, Math.round((Date.now() - recordingStartedAt) / 1000)));
-      try {
-        const blob = new Blob(recordingChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
-        if (blob.size > 620 * 1024) { toast('Voice message is too large. Record a shorter message.'); return; }
-        const audioURL = await blobToDataURL(blob);
-        if (audioURL.length > 900 * 1024) { toast('Voice message is too large. Record a shorter message.'); return; }
-        const peer = messagesByPeer[currentPeer]?.peer || profileCache[currentPeer];
-        if (!peer) throw new Error('Choose a conversation first.');
-        await db.collection('messages').add({
-          from: user.uid, fromName: username, to: currentPeer, toName: peer.username || '',
-          participants: [user.uid, currentPeer], type: 'audio', text: '', audioURL,
-          duration, ts: Date.now()
-        });
-        toast('Voice message sent.');
-      } catch (e) { toast(handleError(e, 'Could not send voice message')); }
-      finally { finishRecordingUI(); }
-    };
-    mediaRecorder.start(); $('recordVoiceBtn').textContent = '■ Stop recording'; $('recordVoiceBtn').disabled = false;
-    toast('Recording… press Stop recording when finished.');
-  } catch (e) { toast(handleError(e, 'Microphone access failed')); finishRecordingUI(); }
-}
+
+// ---------- Voice messages (base64 in Firestore) ----------
 function blobToDataURL(blob) {
   return new Promise((resolve, reject) => {
-    const reader = new FileReader(); reader.onload = () => resolve(reader.result); reader.onerror = reject; reader.readAsDataURL(blob);
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
   });
 }
 function finishRecordingUI() {
   if (recordingStream) recordingStream.getTracks().forEach(t => t.stop());
   recordingStream = null; mediaRecorder = null; recordingChunks = [];
-  if ($('recordVoiceBtn')) { $('recordVoiceBtn').textContent = '🎙 Voice'; $('recordVoiceBtn').disabled = !currentPeer; }
+  if ($('recordVoiceBtn')) {
+    $('recordVoiceBtn').textContent = '🎙 Voice';
+    $('recordVoiceBtn').disabled = !currentPeer;
+  }
+}
+async function toggleVoiceRecording() {
+  if (mediaRecorder && mediaRecorder.state === 'recording') {
+    mediaRecorder.stop();
+    $('recordVoiceBtn').disabled = true;
+    $('recordVoiceBtn').textContent = 'Saving…';
+    return;
+  }
+  if (!user || !currentPeer) { toast('Open a conversation first.'); return; }
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.MediaRecorder) {
+    toast('Voice recording is not supported in this browser. Use HTTPS and a recent browser.'); return;
+  }
+  try {
+    recordingStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    recordingChunks = []; recordingStartedAt = Date.now();
+    const options = {};
+    if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) options.mimeType = 'audio/webm;codecs=opus';
+    mediaRecorder = new MediaRecorder(recordingStream, options);
+    mediaRecorder.ondataavailable = e => { if (e.data && e.data.size) recordingChunks.push(e.data); };
+    mediaRecorder.onerror = e => { console.error('Voice recorder error:', e.error || e); toast('Could not record audio.'); finishRecordingUI(); };
+    mediaRecorder.onstop = async () => {
+      const duration = Math.max(1, Math.min(MAX_VOICE_DURATION_SEC, Math.round((Date.now() - recordingStartedAt) / 1000)));
+      try {
+        const blob = new Blob(recordingChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
+        if (blob.size > MAX_VOICE_BLOB_BYTES) { toast('Voice message is too long. Record a shorter one.'); return; }
+        const audioURL = await blobToDataURL(blob);
+        if (audioURL.length > MAX_VOICE_DATAURL_CHARS) { toast('Voice message is too long. Record a shorter one.'); return; }
+        const peer = (messagesByPeer[currentPeer] && messagesByPeer[currentPeer].peer) || profileCache[currentPeer];
+        if (!peer) throw new Error('Choose a conversation first.');
+        await db.collection('messages').add({
+          from: user.uid, fromName: username,
+          to: currentPeer, toName: peer.username || '',
+          participants: [user.uid, currentPeer],
+          type: 'audio', text: '', audioURL, duration, ts: Date.now()
+        });
+        toast('Voice message sent.');
+      } catch (e) { toast(handleError(e, 'Could not send voice message')); }
+      finally { finishRecordingUI(); }
+    };
+    mediaRecorder.start();
+    $('recordVoiceBtn').textContent = '■ Stop recording';
+    $('recordVoiceBtn').disabled = false;
+    toast('Recording… press Stop recording when finished.');
+  } catch (e) { toast(handleError(e, 'Microphone access failed')); finishRecordingUI(); }
 }
 
-// ---- WebRTC voice calls ----
-const rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+// ---------- WebRTC voice calls ----------
+// Cache of "is this call mine?" so ICE candidate listeners don't re-spend 3 reads per candidate.
+const callOwnershipCache = new Map();
+async function amICallParticipant(callId) {
+  if (callOwnershipCache.has(callId)) return callOwnershipCache.get(callId);
+  try {
+    const snap = await db.collection('calls').doc(callId).get();
+    if (!snap.exists) return false;
+    const d = snap.data();
+    const mine = d.caller === user.uid || d.callee === user.uid;
+    callOwnershipCache.set(callId, mine);
+    return mine;
+  } catch (_) { return false; }
+}
 function addCallCandidateListener(callId, collectionName, pc) {
   if (!['offerCandidates', 'answerCandidates'].includes(collectionName)) {
     console.error('Invalid candidate collection:', collectionName); return;
@@ -330,22 +437,25 @@ function addCallCandidateListener(callId, collectionName, pc) {
   }, e => console.error('Candidate listener failed:', collectionName, callId, e.code, e.message));
   callUnsubs.push(unsub);
 }
-function setupPeerConnection(callId, localRole) {
-  const pc = new RTCPeerConnection(rtcConfig);
+function setupPeerConnection(localRole) {
+  const pc = new RTCPeerConnection({ iceServers: STUN_SERVERS });
   peerConnection = pc;
   pc.ontrack = event => {
     const stream = event.streams && event.streams[0];
-    if (stream) { $('remoteAudio').srcObject = stream; $('remoteAudio').play().catch(() => toast('Tap the page once if audio does not start.')); }
+    if (stream) {
+      $('remoteAudio').srcObject = stream;
+      $('remoteAudio').play().catch(() => toast('Tap the page once if audio does not start.'));
+    }
   };
   pc.onicecandidate = event => {
     if (!event.candidate || !activeCallRef) return;
     const collectionName = localRole === 'caller' ? 'offerCandidates' : 'answerCandidates';
     activeCallRef.collection(collectionName).add(event.candidate.toJSON())
-      .catch(e => console.error('Could not save ICE candidate:', collectionName, e.code, e.message));
+      .catch(e => console.warn('Could not save ICE candidate:', collectionName, e.code, e.message));
   };
   pc.onconnectionstatechange = () => {
     if (pc.connectionState === 'connected') setStatus('Call connected');
-    else if (['failed', 'disconnected'].includes(pc.connectionState)) setStatus('Call ' + pc.connectionState);
+    else if (pc.connectionState === 'failed' || pc.connectionState === 'disconnected') setStatus('Call ' + pc.connectionState);
     else if (pc.connectionState === 'connecting') setStatus('Connecting call…');
   };
   return pc;
@@ -355,40 +465,64 @@ async function addMicrophone(pc) {
   localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
   localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
 }
+function armCallWatchdog(callId) {
+  clearTimeout(callWatchdogTimer);
+  callWatchdogTimer = setTimeout(async () => {
+    if (activeCallId === callId && peerConnection && peerConnection.connectionState !== 'connected') {
+      setStatus('Call timed out');
+      await hangUp();
+    }
+  }, 45000);
+}
 async function startVoiceCall() {
   if (!user || !currentPeer || activeCallId) return;
-  const peer = messagesByPeer[currentPeer]?.peer || profileCache[currentPeer];
+  const peer = (messagesByPeer[currentPeer] && messagesByPeer[currentPeer].peer) || profileCache[currentPeer];
   if (!peer) { toast('Choose a conversation first.'); return; }
   $('callBtn').disabled = true;
   try {
-    const pc = setupPeerConnection('', 'caller');
-    await addMicrophone(pc);
-    const offer = await pc.createOffer();
+    // Create the call doc BEFORE gathering ICE candidates so the parent path exists.
     const ref = db.collection('calls').doc();
     activeCallId = ref.id; activeCallRole = 'caller'; activeCallRef = ref;
-    // Create the call document before setting the local description so ICE candidates
-    // can be saved immediately as they are gathered.
-    await ref.set({ caller: user.uid, callerName: username || user.displayName || 'Textly user', callee: currentPeer,
-      calleeName: peer.username || '', status: 'ringing', offer: { type: offer.type, sdp: offer.sdp },
-      createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+
+    const pc = setupPeerConnection('caller');
+    await addMicrophone(pc);
+    const offer = await pc.createOffer();
     await pc.setLocalDescription(offer);
+
+    await ref.set({
+      caller: user.uid,
+      callerName: username || user.displayName || 'Textly user',
+      callee: currentPeer,
+      calleeName: peer.username || '',
+      status: 'ringing',
+      offer: { type: offer.type, sdp: offer.sdp },
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    callOwnershipCache.set(ref.id, true);
     $('hangupBtn').hidden = false; $('callBtn').disabled = true; setStatus('Calling…');
+    armCallWatchdog(ref.id);
+
     let answerCandidatesListening = false;
     const unsub = ref.onSnapshot(async snap => {
-      if (!snap.exists) { await cleanupCall(false); setStatus('Call ended'); return; }
+      if (!snap.exists) { await cleanupCall(); setStatus('Call ended'); return; }
       const data = snap.data();
       if (data.answer && pc.signalingState === 'have-local-offer') {
         try {
           await pc.setRemoteDescription(new RTCSessionDescription(data.answer));
-          if (!answerCandidatesListening) { answerCandidatesListening = true; addCallCandidateListener(ref.id, 'answerCandidates', pc); }
+          if (!answerCandidatesListening) {
+            answerCandidatesListening = true;
+            addCallCandidateListener(ref.id, 'answerCandidates', pc);
+          }
         } catch (e) { console.warn('Could not apply call answer:', e); }
       }
-      if (data.status === 'rejected') { toast('Call was declined.'); await cleanupCall(false); setStatus('Call declined'); }
-      else if (data.status === 'ended') { await cleanupCall(false); setStatus('Call ended'); }
+      if (data.status === 'rejected') { toast('Call was declined.'); await cleanupCall(); setStatus('Call declined'); }
+      else if (data.status === 'ended') { await cleanupCall(); setStatus('Call ended'); }
     }, e => { console.error('Call listener failed:', e.code, e.message); toast(handleError(e, 'Call listener failed')); });
     callUnsubs.push(unsub);
   } catch (e) {
-    console.error('Could not start call:', e); toast(handleError(e, 'Could not start voice call')); await cleanupCall(true);
+    console.error('Could not start call:', e);
+    toast(handleError(e, 'Could not start voice call'));
+    await cleanupCall();
   }
 }
 async function acceptIncomingCall() {
@@ -400,29 +534,40 @@ async function acceptIncomingCall() {
     const snap = await ref.get();
     if (!snap.exists || snap.data().status !== 'ringing' || snap.data().callee !== user.uid) throw new Error('This call is no longer available.');
     activeCallId = info.id; activeCallRole = 'callee'; activeCallRef = ref;
-    const pc = setupPeerConnection(info.id, 'callee');
+    callOwnershipCache.set(info.id, true);
+    const pc = setupPeerConnection('callee');
     await addMicrophone(pc);
     await pc.setRemoteDescription(new RTCSessionDescription(snap.data().offer));
     addCallCandidateListener(info.id, 'offerCandidates', pc);
-    const answer = await pc.createAnswer(); await pc.setLocalDescription(answer);
+    const answer = await pc.createAnswer();
+    await pc.setLocalDescription(answer);
     await ref.update({ answer: { type: answer.type, sdp: answer.sdp }, status: 'active' });
-    $('incomingCall').hidden = true; $('hangupBtn').hidden = false; $('callBtn').disabled = true; setStatus('Connecting call…');
-    const unsub = ref.onSnapshot(async callSnap => {
-      if (!callSnap.exists || callSnap.data().status === 'ended') { await cleanupCall(false); setStatus('Call ended'); }
+    $('incomingCall').hidden = true; $('hangupBtn').hidden = false; $('callBtn').disabled = true;
+    setStatus('Connecting call…');
+    armCallWatchdog(info.id);
+    const unsub = ref.onSnapshot(callSnap => {
+      if (!callSnap.exists || callSnap.data().status === 'ended') { cleanupCall().then(() => setStatus('Call ended')); }
     }, e => console.error('Call listener failed:', e.code, e.message));
     callUnsubs.push(unsub);
     addCallCandidateListener(info.id, 'answerCandidates', pc);
   } catch (e) {
-    console.error('Could not answer call:', e); toast(handleError(e, 'Could not answer call'));
-    await cleanupCall(true); $('incomingCall').hidden = true;
+    console.error('Could not answer call:', e);
+    const msg = (e && e.code === 'permission-denied') ? 'Call already ended.' : handleError(e, 'Could not answer call');
+    toast(msg);
+    await cleanupCall();
+    $('incomingCall').hidden = true;
   } finally { $('answerCallBtn').disabled = false; }
 }
 async function rejectIncomingCall() {
-  const info = incomingCallInfo; $('incomingCall').hidden = true; incomingCallInfo = null;
+  const info = incomingCallInfo;
+  $('incomingCall').hidden = true; incomingCallInfo = null;
   if (!info || !user) return;
   try {
-    const ref = db.collection('calls').doc(info.id); const snap = await ref.get();
-    if (snap.exists && snap.data().callee === user.uid && snap.data().status === 'ringing') await ref.update({ status: 'rejected' });
+    const ref = db.collection('calls').doc(info.id);
+    const snap = await ref.get();
+    if (snap.exists && snap.data().callee === user.uid && snap.data().status === 'ringing') {
+      await ref.update({ status: 'rejected' });
+    }
   } catch (e) { console.warn('Could not reject call:', e.code, e.message); }
 }
 async function hangUp() {
@@ -435,82 +580,126 @@ async function hangUp() {
       }
     }
   } catch (e) { console.warn('Could not update call status:', e.code, e.message); }
-  await cleanupCall(false); setStatus('Call ended');
+  await cleanupCall();
+  setStatus('Call ended');
 }
-async function cleanupCall(removeDoc) {
-  const ref = activeCallRef;
-  if (peerConnection) { try { peerConnection.ontrack = null; peerConnection.onicecandidate = null; peerConnection.close(); } catch (_) {} }
+async function cleanupCall() {
+  clearTimeout(callWatchdogTimer); callWatchdogTimer = null;
+  if (peerConnection) {
+    try {
+      peerConnection.ontrack = null;
+      peerConnection.onicecandidate = null;
+      peerConnection.onconnectionstatechange = null;
+      peerConnection.close();
+    } catch (_) {}
+  }
   peerConnection = null;
-  if (localStream) localStream.getTracks().forEach(t => t.stop()); localStream = null;
-  if ($('remoteAudio')) { $('remoteAudio').pause(); $('remoteAudio').srcObject = null; }
+  if (localStream) localStream.getTracks().forEach(t => t.stop());
+  localStream = null;
+  if ($('remoteAudio')) { try { $('remoteAudio').pause(); } catch (_) {} $('remoteAudio').srcObject = null; }
   callUnsubs.forEach(fn => { try { fn(); } catch (_) {} }); callUnsubs = [];
   activeCallId = null; activeCallRole = null; activeCallRef = null;
   if ($('hangupBtn')) $('hangupBtn').hidden = true;
   if ($('callBtn')) $('callBtn').disabled = !currentPeer;
-  if (removeDoc && ref) { try { const snap = await ref.get(); if (snap.exists && snap.data().status === 'ringing') await ref.update({ status: 'ended', endedAt: firebase.firestore.FieldValue.serverTimestamp() }); } catch (_) {} }
+  if ($('recordVoiceBtn')) $('recordVoiceBtn').disabled = !currentPeer;
 }
 
+// ---------- Username creation ----------
 async function createUsername() {
-  const n=$('usernameInput').value.trim().toLowerCase().replace(/^@/,'');
-  if (!/^[a-z0-9_]{3,20}$/.test(n)) { setError('loginError','Use 3–20 lowercase letters, numbers, or underscores.'); return; }
-  $('saveUsername').disabled=true; setError('loginError','Creating your account…');
+  const n = $('usernameInput').value.trim().toLowerCase().replace(/^@/, '');
+  if (!/^[a-z0-9_]{3,20}$/.test(n)) { setError('loginError', 'Use 3–20 lowercase letters, numbers, or underscores.'); return; }
+  $('saveUsername').disabled = true;
+  setError('loginError', 'Creating your account…');
   try {
-    const usernameRef=db.collection('usernames').doc(n), userRef=db.collection('users').doc(user.uid);
+    const usernameRef = db.collection('usernames').doc(n);
+    const userRef = db.collection('users').doc(user.uid);
     await db.runTransaction(async tx => {
-      const existing=await tx.get(usernameRef);
+      const existing = await tx.get(usernameRef);
       if (existing.exists) throw new Error('USERNAME_TAKEN');
-      tx.set(usernameRef,{uid:user.uid,createdAt:firebase.firestore.FieldValue.serverTimestamp()});
-      tx.set(userRef,{username:n,displayName:user.displayName||'',photoURL:user.photoURL||'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+      // NOTE: 'createdAt' is allowed by the updated usernames rule and must equal request.time.
+      tx.set(usernameRef, { uid: user.uid, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+      tx.set(userRef, {
+        username: n,
+        displayName: user.displayName || '',
+        photoURL: user.photoURL || '',
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
     });
-    username=n; setError('loginError',''); await startApp();
-  } catch(e) {
-    setError('loginError',e.message==='USERNAME_TAKEN'?'That username is taken. Try another.':handleError(e,'Could not create your account'));
-  } finally { $('saveUsername').disabled=false; }
+    username = n;
+    setError('loginError', '');
+    await startApp();
+  } catch (e) {
+    setError('loginError', e.message === 'USERNAME_TAKEN' ? 'That username is taken. Try another.' : handleError(e, 'Could not create your account'));
+  } finally { $('saveUsername').disabled = false; }
 }
+
+// ---------- Wiring ----------
 $('googleBtn').addEventListener('click', async () => {
-  setError('loginError','');
-  const provider=new firebase.auth.GoogleAuthProvider();
+  setError('loginError', '');
+  const provider = new firebase.auth.GoogleAuthProvider();
   try { await auth.signInWithPopup(provider); }
-  catch(e) {
-    if (e.code==='auth/popup-blocked' || e.code==='auth/operation-not-supported-in-this-environment') {
-      try { await auth.signInWithRedirect(provider); } catch(err) { setError('loginError',handleError(err,'Google sign-in failed')); }
-    } else if (e.code!=='auth/popup-closed-by-user') setError('loginError',handleError(e,'Google sign-in failed'));
+  catch (e) {
+    if (e.code === 'auth/popup-blocked' || e.code === 'auth/operation-not-supported-in-this-environment') {
+      try { await auth.signInWithRedirect(provider); }
+      catch (err) { setError('loginError', handleError(err, 'Google sign-in failed')); }
+    } else if (e.code !== 'auth/popup-closed-by-user') {
+      setError('loginError', handleError(e, 'Google sign-in failed'));
+    }
   }
 });
-auth.getRedirectResult().catch(e=>setError('loginError',handleError(e,'Google sign-in failed')));
+auth.getRedirectResult().catch(e => setError('loginError', handleError(e, 'Google sign-in failed')));
 auth.onAuthStateChanged(async u => {
-  user=u;
+  user = u;
   if (!u) {
-    clearAppState(); showLogin(); $('googleBtn').hidden=false; $('usernameStep').hidden=true;
-    $('loginIntro').textContent='Private conversations, kept simple.'; return;
+    clearAppState();
+    showLogin();
+    $('googleBtn').hidden = false;
+    $('usernameStep').hidden = true;
+    $('loginIntro').textContent = 'Private conversations, kept simple.';
+    return;
   }
-  $('googleBtn').hidden=true;
+  $('googleBtn').hidden = true;
   try {
-    const exists=await loadOwnProfile(u);
-    if (!exists) { $('loginView').hidden=false; $('appView').hidden=true; $('usernameStep').hidden=false; $('loginIntro').textContent='One last step: choose your Textly username.'; }
-    else await startApp();
-  } catch(e) { showLogin(handleError(e,'Could not load your account')); }
+    const exists = await loadOwnProfile(u);
+    if (!exists) {
+      $('loginView').hidden = false; $('appView').hidden = true;
+      $('usernameStep').hidden = false;
+      $('loginIntro').textContent = 'One last step: choose your Textly username.';
+    } else {
+      await startApp();
+    }
+  } catch (e) { showLogin(handleError(e, 'Could not load your account')); }
 });
-$('saveUsername').addEventListener('click',createUsername);
-$('usernameInput').addEventListener('keydown',e=>{if(e.key==='Enter')createUsername();});
-$('addFriend').addEventListener('click',addFriend);
-$('friendInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addFriend();}});
-$('search').addEventListener('input',renderContacts);
-$('composeForm').addEventListener('submit',e=>{e.preventDefault();sendMessage();});
+$('saveUsername').addEventListener('click', createUsername);
+$('usernameInput').addEventListener('keydown', e => { if (e.key === 'Enter') createUsername(); });
+$('addFriend').addEventListener('click', addFriend);
+$('friendInput').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addFriend(); } });
+$('search').addEventListener('input', renderContacts);
+$('composeForm').addEventListener('submit', e => { e.preventDefault(); sendMessage(); });
 $('callBtn').addEventListener('click', startVoiceCall);
 $('hangupBtn').addEventListener('click', hangUp);
 $('answerCallBtn').addEventListener('click', acceptIncomingCall);
 $('rejectCallBtn').addEventListener('click', rejectIncomingCall);
 $('recordVoiceBtn').addEventListener('click', toggleVoiceRecording);
-
-$('backBtn').addEventListener('click',()=>$('app').classList.remove('showchat'));
-$('signOut').addEventListener('click',async()=>{stopListeners();try{await auth.signOut();}catch(e){toast(handleError(e,'Sign out failed'));}});
-$('themeBtn').addEventListener('click',()=>{
-  const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
-  document.documentElement.dataset.theme=next; $('themeBtn').textContent=next==='dark'?'☀':'☾';
-  try{localStorage.setItem('textly_theme',next);}catch(_){}
+$('backBtn').addEventListener('click', () => $('app').classList.remove('showchat'));
+$('signOut').addEventListener('click', async () => {
+  await cleanupCall();
+  stopListeners();
+  try { await auth.signOut(); } catch (e) { toast(handleError(e, 'Sign out failed')); }
 });
-try { const saved=localStorage.getItem('textly_theme'); if(saved==='dark'||saved==='light'){document.documentElement.dataset.theme=saved;$('themeBtn').textContent=saved==='dark'?'☀':'☾';} } catch(_){}
+$('themeBtn').addEventListener('click', () => {
+  const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  $('themeBtn').textContent = next === 'dark' ? '☀' : '☾';
+  try { localStorage.setItem('textly_theme', next); } catch (_) {}
+});
+try {
+  const saved = localStorage.getItem('textly_theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.dataset.theme = saved;
+    $('themeBtn').textContent = saved === 'dark' ? '☀' : '☾';
+  }
+} catch (_) {}
 </script>
 </body>
 </html>
